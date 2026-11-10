@@ -182,10 +182,10 @@ body::before{inset:0}
 .chips.l{--fl:28px}.chips.r{--fr:44px}
 .hr{display:flex;align-items:center;gap:8px}
 .btn.bell{padding:0;width:40px;height:40px;border-radius:99px;display:grid;place-items:center;flex:none}.bell svg{width:20px;height:20px}
-.rrow{display:flex;align-items:center;gap:10px;padding:12px 14px}
-.rt{flex:1;display:flex;flex-direction:column}
-.rrow input{font-size:1.5rem;font-weight:800;background:none;border:0;color:var(--ink);padding:0;width:8.5rem;font-variant-numeric:tabular-nums}
-.rtog,.rdel{border:1px solid var(--gb);background:var(--g);border-radius:99px;padding:7px 14px;font-size:.85rem;color:var(--muted)}
+.rrow{display:flex;align-items:center;gap:8px;padding:12px}
+.rt{flex:1;min-width:0;display:flex;flex-direction:column}
+.rrow input{font-size:1.3rem;font-weight:700;background:none;border:0;color:var(--ink);padding:0;margin:0;width:100%;min-width:0;font-variant-numeric:tabular-nums}.rrow input::-webkit-datetime-edit,.rrow input::-webkit-datetime-edit-fields-wrapper{padding:0}
+.rtog,.rdel{flex:none;border:1px solid var(--gb);background:var(--g);border-radius:99px;padding:7px 12px;font-size:.85rem;color:var(--muted)}
 .rtog[aria-pressed="true"]{background:var(--squeeze);color:var(--onorb);border-color:transparent;font-weight:600}
 .rdel{width:36px;height:36px;padding:0;font-size:1.2rem;line-height:1}
 .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
