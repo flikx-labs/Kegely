@@ -192,6 +192,7 @@ body::before{inset:0}
 .vgrid button{text-align:left;border:1px solid var(--gb);background:var(--g);border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:1px}
 .vgrid b{font-weight:700}.vgrid span{font-size:.75rem;color:var(--muted)}
 .vgrid button[aria-pressed="true"]{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 12%,transparent)}
+.guide li b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -270,6 +271,7 @@ body::before{inset:0}
     </ol>
   </div>
   <div class="panel"><h2>What is the pelvic floor?</h2><svg viewBox="0 0 200 110" role="img" aria-label="Diagram of the pelvic floor as a supportive sling" style="width:100%;height:auto;color:var(--ink)"><path d="M36 26Q100 126 164 26" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity=".35"/><path d="M58 28Q100 84 142 28" fill="none" stroke="var(--relax)" stroke-width="5" stroke-linecap="round"/><path d="M100 76V36M92 46l8-10 8 10" fill="none" stroke="var(--squeeze)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><text x="100" y="103" text-anchor="middle" font-size="9" fill="currentColor" opacity=".7">a sling of muscles; squeeze = gentle lift</text></svg><p class="note" style="margin:8px 0 0">It runs from your pubic bone to your tailbone and supports the bladder and bowel, and the prostate. In men these muscles help you hold and empty urine, control wind, and play a part in erections and ejaculation. They also work with your deep core. Stronger, better-timed muscles can help with dribbling and leaks, may help some men with erections, and are commonly used to recover after prostate surgery.</p></div>
+  <div class="panel"><h2>Possible benefits</h2><ul><li><b>Bladder control.</b> Stronger muscles can reduce dribbling and leaks, including dribbling after you finish urinating. This is among the best-supported benefits.</li><li><b>Recovery after prostate surgery.</b> Training before and after is commonly used to help regain urinary control sooner.</li><li><b>Firmer erections.</b> The muscles at the base of the penis help keep an erection firm. Studies suggest training may help some men with erection difficulties.</li><li><b>Ejaculation control.</b> Better awareness and timing of these muscles may help some men last longer. Studies are small and results vary.</li><li><b>Bowel control.</b> The same muscles help hold in wind and stool.</li><li><b>Core and pelvic support.</b> They work with your deep core, abdominals and back to support the pelvis.</li></ul><p class="note">Evidence is strongest for bladder control, and weaker (small, varied studies) for erections and ejaculation. Results aren’t guaranteed and usually take weeks to months of regular practice. Kegels don’t replace treatment: if erection or ejaculation problems continue, see a doctor.</p></div>
   <div class="panel"><h2>Positions</h2><div class="pos"><figure><svg data-p="lying"></svg>Lying: easiest</figure><figure><svg data-p="sitting"></svg>Sitting: next</figure><figure><svg data-p="standing"></svg>Standing: hardest</figure></div><p class="note" style="margin:8px 0 0">Start lying down, where gravity helps. Move up a position once the squeeze feels easy and controlled.</p></div>
   <div class="panel"><h2>Find the right muscles</h2><ul><li>Sit or lie down and breathe normally. Imagine holding back wind, then also stopping the flow of urine. You should feel a gentle squeeze and lift inside.</li><li>In a mirror you may see the base of the penis draw in and the testicles lift slightly. Your belly, buttocks and thighs stay soft.</li><li>Keep your buttocks, thighs and stomach soft. If they tighten, ease off.</li><li>Stopping urine mid-flow is only an occasional check, not an exercise.</li></ul></div>
   <div class="panel"><h2>Common mistakes</h2><ul><li>Holding your breath</li><li>Squeezing buttocks, thighs or abs instead</li><li>Not relaxing fully between squeezes</li><li>Squeezing as hard as possible until you tire</li></ul></div>
@@ -295,7 +297,7 @@ body::before{inset:0}
   var LEVELS={Beginner:{s:3,r:5,n:8,q:5},Intermediate:{s:5,r:5,n:10,q:8},Advanced:{s:8,r:8,n:10,q:10},Custom:null};
   var KEY='kegel-clone-v1',GOAL=3;
   var $=function(id){return document.getElementById(id)};
-  var store={sessions:[],level:'Beginner',custom:{s:4,r:6,n:10,q:5,b:10},snd:true,voc:false,hap:true,rem:[],fired:{},vp:'aria'};
+  var store={sessions:[],level:'Beginner',custom:{s:4,r:6,n:10,q:5,b:10},snd:true,voc:false,hap:true,rem:[],fired:{},vp:'nora'};
   try{var raw=localStorage.getItem(KEY);if(raw){var d=JSON.parse(raw);if(d&&typeof d==='object')for(var k in d)store[k]=d[k];}}catch(e){}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
 
@@ -374,12 +376,8 @@ body::before{inset:0}
   var NOVOICE='Voice can’t play here. In-app viewers usually block it. Open the page in Chrome (Android) or Safari (iPhone), and check your phone’s text-to-speech settings.';
   function setStat(t){var e=$('vstat');if(e)e.textContent=t;if(!st.running&&st.phase==='ready'){var n=$('next');if(n)n.textContent=t;}}
   var PERS=[
-    {id:'aria',name:'Aria',g:'f',d:'calm, warm',pitch:1.08,rate:.92},
     {id:'nora',name:'Nora',g:'f',d:'soft, slow',pitch:1,rate:.86},
-    {id:'maya',name:'Maya',g:'f',d:'bright, clear',pitch:1.18,rate:.98},
-    {id:'leo',name:'Leo',g:'m',d:'deep, steady',pitch:.85,rate:.92},
-    {id:'ethan',name:'Ethan',g:'m',d:'clear, friendly',pitch:.9,rate:.98},
-    {id:'kai',name:'Kai',g:'m',d:'low, relaxed',pitch:.75,rate:.86}];
+    {id:'maya',name:'Maya',g:'f',d:'bright, clear',pitch:1.18,rate:.98}];
   var FEM=/female|woman|samantha|karen|moira|tessa|serena|susan|zira|hazel|aria|jenny|\bava\b|allison|libby|sonia|natasha|clara|catherine|heera|veena|fiona|victoria|kate|joana|zoe|\bamy\b|emma|joanna|salli|kimberly|nicole|olivia/i;
   var MAL=/\bmale\b|daniel|\balex\b|\bfred\b|\bthomas\b|oliver|rishi|\bdavid\b|\bmark\b|george|james|ryan|\bguy\b|ravi|aaron|arthur|gordon|brian|matthew|geraint/i;
   var VC={};
@@ -566,7 +564,7 @@ body::before{inset:0}
     var g=$('vgrid');if(!g)return;
     if(!window.speechSynthesis){setStat(NOVOICE);g.style.display='none';$('vtest').style.display='none';return;}
     g.innerHTML='';
-    PERS.forEach(function(p){var b=document.createElement('button');b.innerHTML='<b>'+p.name+'</b><span>'+(p.g==='f'?'Female':'Male')+' · '+p.d+'</span>';b.setAttribute('aria-pressed',p.id===store.vp);b.onclick=function(){store.vp=p.id;save();fillVoices();setStat('Testing…');say('Hi, I’m '+p.name+'. Squeeze, and relax.',true);};g.appendChild(b);});
+    PERS.forEach(function(p){var b=document.createElement('button');b.innerHTML='<b>'+p.name+'</b><span>'+(p.g==='f'?'Female':'Male')+' · '+p.d+'</span>';b.setAttribute('aria-pressed',p.id===persona(store.vp).id);b.onclick=function(){store.vp=p.id;save();fillVoices();setStat('Testing…');say('Hi, I’m '+p.name+'. Squeeze, and relax.',true);};g.appendChild(b);});
   }
   if(window.speechSynthesis){speechSynthesis.onvoiceschanged=function(){VC={};};}
   fillVoices();
