@@ -20,18 +20,15 @@ Guided Kegel sessions, supporting exercises, progress tracking and practical tec
 
 ---
 
-<table align="center">
-  <tr>
-    <td align="center"><img src="docs/screenshots/timer.png" alt="Kegely guided training timer" width="220"><br><sub><b>Guided timer</b></sub></td>
-    <td align="center"><img src="docs/screenshots/exercises.png" alt="Kegely supporting exercises" width="220"><br><sub><b>Supporting exercises</b></sub></td>
-    <td align="center"><img src="docs/screenshots/progress.png" alt="Kegely progress dashboard" width="220"><br><sub><b>Progress dashboard</b></sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/guide.png" alt="Kegely guide and voice settings" width="220"><br><sub><b>Guide &amp; voice settings</b></sub></td>
-    <td align="center"><img src="docs/screenshots/reminders.png" alt="Kegely daily reminders" width="220"><br><sub><b>Daily reminders</b></sub></td>
-    <td></td>
-  </tr>
-</table>
+<p align="center">
+  <img src="docs/screenshots/timer.png" alt="Kegely guided training timer" width="18%">
+  <img src="docs/screenshots/exercises.png" alt="Kegely supporting exercises" width="18%">
+  <img src="docs/screenshots/progress.png" alt="Kegely progress dashboard" width="18%">
+  <img src="docs/screenshots/guide.png" alt="Kegely guide and voice settings" width="18%">
+  <img src="docs/screenshots/reminders.png" alt="Kegely daily reminders" width="18%">
+</p>
+
+<p align="center"><sub>Timer &nbsp;·&nbsp; Exercises &nbsp;·&nbsp; Progress &nbsp;·&nbsp; Guide &nbsp;·&nbsp; Reminders</sub></p>
 
 ## Why Kegely?
 
