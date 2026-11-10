@@ -3,13 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kegely</title>
-<meta name="description" content="A simple Kegel timer with guided squeeze and relax phases. Free, private, and your progress stays in your browser.">
+<title>Kegely for Men</title>
+<meta name="description" content="A pelvic floor (Kegel) trainer for men: a guided squeeze and relax timer, exercises and a clear guide. Free and private.">
 <meta name="theme-color" content="#f2f4f9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0f1a" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Kegely">
+<meta name="apple-mobile-web-app-title" content="Kegely Men">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
@@ -115,12 +119,68 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
 @supports not (inset:0){.stage svg,.mid{top:0;left:0;width:100%;height:100%}.orb{top:8%;left:8%;width:84%;height:84%}.orb::before{top:62%;left:26%;width:48%;height:31%}.orb::after{top:4%;left:17%;width:66%;height:40%}.stage::before{top:-7%;left:-7%;width:114%;height:114%}body::before{top:-15%;left:-15%;width:130%;height:130%}}
 @supports not (color:color-mix(in srgb,red,blue)){.orb{background:var(--c);box-shadow:0 20px 50px -14px rgba(0,0,0,.35)}.stage::before{background:none}body::before{background:radial-gradient(40% 35% at 12% 10%,rgba(91,75,255,.22),transparent 70%),radial-gradient(40% 34% at 92% 32%,rgba(16,185,129,.2),transparent 70%)}.btn.main,.chips button[aria-pressed="true"],.opts button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}nav button[aria-current="page"]{background:var(--line);color:var(--ink)}.stage .track{stroke:var(--line)}#arc{filter:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.panel,.tile,.today,.chips button,.btn,.opts button,.custom input,nav{background:var(--panel)}}
+:root{--bg:#f3f1ed;--panel:#fbfaf8;--ink:#16181c;--muted:#686c75;--line:#e3e0da;--squeeze:#3f4e78;--relax:#4a8270;--idle:#9da2ac;--onorb:#fff;--g:rgba(255,255,255,.5);--gb:rgba(255,255,255,.85);--gs:0 8px 28px rgba(30,32,40,.07);--hl:inset 0 1px 0 rgba(255,255,255,.9)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0b0e;--panel:#14161b;--ink:#eceef2;--muted:#8b919e;--line:#22252e;--squeeze:#aab8e0;--relax:#9fd1bd;--idle:#5a606c;--onorb:#0a0b0e;--g:rgba(255,255,255,.055);--gb:rgba(255,255,255,.11);--gs:0 8px 28px rgba(0,0,0,.4);--hl:inset 0 1px 0 rgba(255,255,255,.16)}}
+:root[data-theme="dark"]{--bg:#0a0b0e;--panel:#14161b;--ink:#eceef2;--muted:#8b919e;--line:#22252e;--squeeze:#aab8e0;--relax:#9fd1bd;--idle:#5a606c;--onorb:#0a0b0e;--g:rgba(255,255,255,.055);--gb:rgba(255,255,255,.11);--gs:0 8px 28px rgba(0,0,0,.4);--hl:inset 0 1px 0 rgba(255,255,255,.16)}
+body::before{background:radial-gradient(45% 38% at 10% 8%,color-mix(in srgb,var(--squeeze) 22%,transparent),transparent 70%),radial-gradient(42% 36% at 95% 40%,color-mix(in srgb,var(--relax) 16%,transparent),transparent 70%)}
+.panel,.tile,.today,.btn,.opts button,.custom input,nav{background:linear-gradient(150deg,rgba(255,255,255,.16),rgba(255,255,255,0) 42%),var(--g);box-shadow:var(--gs),var(--hl)}
+.chips button{background:var(--g);box-shadow:var(--hl);-webkit-backdrop-filter:none;backdrop-filter:none}
+.btn.main{background:var(--ink);color:var(--bg);border-color:transparent}
+.stage svg{overflow:visible}
+#arc{filter:none;stroke-width:3.5}
+.stage::before{inset:-14%;filter:none;background:radial-gradient(circle,color-mix(in srgb,var(--c) 24%,transparent) 0,transparent 62%)}
+.orb::after{opacity:.5}
+header{margin-bottom:10px}
+main{padding-top:14px}
+.chips button{padding:7px 14px}
+.plan{font-size:.82rem;margin-top:10px}
+.next{height:2.7em;overflow:hidden;font-size:.85rem;line-height:1.35;margin:0 0 10px}
+.custom{grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.custom label{font-size:.66rem}
+.custom input{padding:9px 2px;text-align:center}
+body.cust{--ex:74px}
+.stage{margin:10px auto 6px;width:max(150px,min(320px,84vw,calc(100vh - 400px - var(--ex,0px))));height:max(150px,min(320px,84vw,calc(100vh - 400px - var(--ex,0px))))}
+@supports (height:100dvh){.stage{width:max(150px,min(320px,84vw,calc(100dvh - 400px - var(--ex,0px))));height:max(150px,min(320px,84vw,calc(100dvh - 400px - var(--ex,0px))))}}
+nav{grid-template-columns:repeat(4,1fr)}
+.ex svg{width:100%;height:auto;border-radius:16px;background:rgba(127,127,127,.08)}
+.fl{stroke:var(--line);stroke-width:2;stroke-linecap:round}
+.lb{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.hd{fill:var(--ink)}
+.tg{fill:var(--relax)}
+.meta{margin:0 0 6px;color:var(--squeeze);font-size:.85rem;font-weight:600}
+.ex h2{margin:10px 0 2px}
+.pos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pos figure{margin:0;text-align:center;font-size:.78rem;color:var(--muted)}
+.pos svg{width:100%;height:auto;border-radius:12px;background:rgba(127,127,127,.08)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.panel,.tile,.today,.btn,.opts button,.custom input,nav{background:var(--panel)}}
+.tag{display:block;font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:1px}
+.stage{transition:width .4s,height .4s}
+.focus .stage{margin-top:6px;width:max(220px,min(440px,92vw,calc(100vh - 210px)));height:max(220px,min(440px,92vw,calc(100vh - 210px)))}
+@supports (height:100dvh){.focus .stage{width:max(220px,min(440px,92vw,calc(100dvh - 210px)));height:max(220px,min(440px,92vw,calc(100dvh - 210px)))}}
+.focus #count{font-size:clamp(3.2rem,min(24vw,14vh),7rem)}
+.focus #phase{font-size:1.4rem}
+header{min-height:58px}
+main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+.focus main{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+.stage{transition:none;width:max(130px,min(320px,84vw,calc(100vh - 470px - var(--ex,0px))));height:max(130px,min(320px,84vw,calc(100vh - 470px - var(--ex,0px))))}
+@supports (height:100dvh){.stage{width:max(130px,min(320px,84vw,calc(100dvh - 470px - var(--ex,0px))));height:max(130px,min(320px,84vw,calc(100dvh - 470px - var(--ex,0px))))}}
+@supports (aspect-ratio:1/1){
+#v-timer.on{height:calc(100vh - 185px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));justify-content:center}
+#v-timer>*{flex:none}
+#v-timer .stage{flex:1 1 0;min-height:130px;width:auto;height:auto;aspect-ratio:1/1;max-height:min(380px,92vw);align-self:center;margin:8px 0 4px;will-change:transform}
+.focus #v-timer.on{height:calc(100vh - 70px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+.focus #v-timer .stage{max-height:min(480px,94vw)}
+}
+@supports (aspect-ratio:1/1) and (height:100dvh){#v-timer.on{height:calc(100dvh - 185px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}.focus #v-timer.on{height:calc(100dvh - 70px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}}
+@supports (width:1cqw){.mid{container-type:size}#count,.focus #count{font-size:clamp(2rem,22cqw,7.5rem)}#phase,.focus #phase{font-size:clamp(.9rem,6.2cqw,1.7rem)}#rep{font-size:clamp(.68rem,4cqw,.95rem)}}
+.ex{content-visibility:auto;contain-intrinsic-size:auto 280px}
+#vsel{width:100%;padding:12px;border-radius:14px;border:1px solid var(--gb);background:var(--g);color:var(--ink);font-size:16px}
 </style>
 </head>
 <body>
 <main>
 <header>
-  <h1>Kegely</h1>
+  <h1>Kegely<span class="tag">for men</span></h1>
   <div class="today" id="today" aria-label="Sessions today"><span>Today</span><i></i><i></i><i></i></div>
 </header>
 
@@ -153,6 +213,8 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
   </div>
 </section>
 
+<section class="view" id="v-moves"><h2>Exercises that help</h2><p class="note" style="margin:0">Ten gentle moves that support your pelvic floor. They are not Kegels themselves. Move slowly, breathe out on the effort, and stop if anything hurts.</p><div id="exlist"></div></section>
+
 <section class="view" id="v-progress">
   <h2>Your progress</h2>
   <div class="tiles">
@@ -167,6 +229,8 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
 </section>
 
 <section class="view guide" id="v-guide">
+  <div class="panel" id="inst" style="display:none;margin-top:0"><h2>Install the app</h2><p class="note" id="insttxt" style="margin:0 0 10px"></p><button class="btn main" id="instbtn" style="width:100%;display:none">Install</button></div>
+  <div class="panel" id="vp" style="margin-top:0"><h2>Voice guidance</h2><p class="note" style="margin:0 0 10px">Choose a voice you find calm. The list depends on the voices installed on your phone.</p><select id="vsel" aria-label="Voice"></select><button class="btn" id="vtest" style="width:100%;margin-top:10px">Test voice</button><p class="note" id="vstat" style="margin:10px 0 0"></p></div>
   <h2>How to use it</h2>
   <div class="panel" style="margin-top:0">
     <ol>
@@ -177,12 +241,14 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
       <li>Keep it comfortable and steady rather than as hard as possible.</li>
     </ol>
   </div>
-  <div class="panel"><h2>Find the right muscles</h2><ul><li>Sit or lie down and breathe normally. Imagine holding back wind. You should feel a gentle squeeze and lift inside.</li><li>Keep your buttocks, thighs and stomach soft. If they tighten, ease off.</li><li>Stopping urine mid-flow is only an occasional check, not an exercise.</li></ul></div>
+  <div class="panel"><h2>What is the pelvic floor?</h2><svg viewBox="0 0 200 110" role="img" aria-label="Diagram of the pelvic floor as a supportive sling" style="width:100%;height:auto;color:var(--ink)"><path d="M36 26Q100 126 164 26" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity=".35"/><path d="M58 28Q100 84 142 28" fill="none" stroke="var(--relax)" stroke-width="5" stroke-linecap="round"/><path d="M100 76V36M92 46l8-10 8 10" fill="none" stroke="var(--squeeze)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><text x="100" y="103" text-anchor="middle" font-size="9" fill="currentColor" opacity=".7">a sling of muscles; squeeze = gentle lift</text></svg><p class="note" style="margin:8px 0 0">It runs from your pubic bone to your tailbone and supports the bladder and bowel, and the prostate. In men these muscles help you hold and empty urine, control wind, and play a part in erections and ejaculation. They also work with your deep core. Stronger, better-timed muscles can help with dribbling and leaks, may help some men with erections, and are commonly used to recover after prostate surgery.</p></div>
+  <div class="panel"><h2>Positions</h2><div class="pos"><figure><svg data-p="lying"></svg>Lying: easiest</figure><figure><svg data-p="sitting"></svg>Sitting: next</figure><figure><svg data-p="standing"></svg>Standing: hardest</figure></div><p class="note" style="margin:8px 0 0">Start lying down, where gravity helps. Move up a position once the squeeze feels easy and controlled.</p></div>
+  <div class="panel"><h2>Find the right muscles</h2><ul><li>Sit or lie down and breathe normally. Imagine holding back wind, then also stopping the flow of urine. You should feel a gentle squeeze and lift inside.</li><li>In a mirror you may see the base of the penis draw in and the testicles lift slightly. Your belly, buttocks and thighs stay soft.</li><li>Keep your buttocks, thighs and stomach soft. If they tighten, ease off.</li><li>Stopping urine mid-flow is only an occasional check, not an exercise.</li></ul></div>
   <div class="panel"><h2>Common mistakes</h2><ul><li>Holding your breath</li><li>Squeezing buttocks, thighs or abs instead</li><li>Not relaxing fully between squeezes</li><li>Squeezing as hard as possible until you tire</li></ul></div>
   <div class="panel"><h2>Build up gradually</h2><ul><li>Start with holds you can do cleanly, then add seconds and reps. A common goal is 10 holds of up to 10 seconds plus 10 quick squeezes, about 3 times a day.</li><li>Begin lying down, then sitting, then standing.</li><li>Tie sessions to a habit, like after brushing your teeth or when the kettle’s on.</li><li>Expect change over weeks to months. Many programmes run for at least 3 months.</li></ul><p class="note">Routines follow the pattern in NHS physiotherapy leaflets (slow holds, then quick squeezes, about 3 times a day) and NICE’s advice to train for at least 3 months.</p></div>
   
   <div class="panel"><h2>The knack</h2><p class="note" style="margin:0">Tighten your pelvic floor just before you cough, sneeze, laugh or lift, and hold it until you’re done. It helps protect against leaks when pressure rises.</p></div>
-  <div class="panel"><h2>Check with a professional first if</h2><ul><li>You have pelvic pain, pain during sex, or trouble relaxing or starting to pass urine. Strengthening can make a tight pelvic floor worse, and relaxing may need to come first.</li><li>You’re pregnant, recently gave birth, or had pelvic or prostate surgery. Follow your clinician’s plan.</li></ul></div>
+  <div class="panel"><h2>Check with a professional first if</h2><ul><li>You have pelvic pain, pain during sex, or trouble relaxing or starting to pass urine. Strengthening can make a tight pelvic floor worse, and relaxing may need to come first.</li><li>You’ve had prostate or pelvic surgery, or have a prostate condition. Follow your clinician’s plan.</li></ul></div>
   <div class="panel"><h2>Stay safe</h2>
     <p class="note" style="margin:0">Stop if you feel pain or your symptoms get worse. Avoid holding your breath or tensing your thighs, buttocks or stomach instead. If you’re unsure Kegels are right for you, ask a doctor or pelvic floor physiotherapist. This is educational and not medical advice.</p>
   </div>
@@ -191,6 +257,7 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
 
 <nav id="nav" aria-label="Sections">
   <button data-v="timer"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg>Timer</button>
+  <button data-v="moves"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l-3 5M12 13l3 5M7 10h10"/></svg>Exercises</button>
   <button data-v="progress"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Progress</button>
   <button data-v="guide"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5zM4 19V5.5"/></svg>Guide</button>
 </nav>
@@ -217,9 +284,9 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
   function totalSecs(c){return c.n*c.s+(c.n-1)*c.r+(c.q?c.b+c.q*2-1:0);}
 
   /* navigation */
-  var VIEWS=['timer','progress','guide'];
+  var VIEWS=['timer','moves','progress','guide'];
   function show(v){
-    if(VIEWS.indexOf(v)<0)v='timer';
+    if(VIEWS.indexOf(v)<0)v='timer';animate(v==='moves');
     VIEWS.forEach(function(n){$('v-'+n).classList.toggle('on',n===v);});
     Array.prototype.forEach.call($('nav').children,function(b){if(b.dataset.v===v)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   }
@@ -236,9 +303,9 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
   });
   function render(){
     Array.prototype.forEach.call(tabs.children,function(b){b.setAttribute('aria-pressed',b.textContent===level);});
-    $('custom').classList.toggle('on',level==='Custom');
+    $('custom').classList.toggle('on',level==='Custom');document.body.classList.toggle('cust',level==='Custom');
     var c=cfg();
-    $('summary').textContent=c.s+'s squeeze, '+c.r+'s relax, '+c.n+' reps'+(c.q?' + '+c.q+' quick':'')+' (about '+Math.max(1,Math.round(totalSecs(c)/60))+' min)';
+    $('summary').textContent=c.s+'s on · '+c.r+'s off · '+c.n+' reps'+(c.q?' + '+c.q+' quick':'')+' · ~'+Math.max(1,Math.round(totalSecs(c)/60))+' min';
   }
 
   /* stats */
@@ -276,9 +343,41 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
       o.start();o.stop(ac.currentTime+dur+.02);
     }catch(e){}
   }
-  function say(t){
-    if(!store.voc||!window.speechSynthesis)return;
-    try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t));}catch(e){}
+  var VOICE=null;
+  function pickVoice(){
+    var vs=(window.speechSynthesis&&speechSynthesis.getVoices())||[];
+    if(!vs.length)return null;
+    if(store.vname){for(var i=0;i<vs.length;i++)if(vs[i].name===store.vname)return vs[i];}
+    var L=(navigator.language||'en').toLowerCase();
+    var en=vs.filter(function(v){return /^en/i.test(v.lang);}).sort(function(a,b){return (b.lang.toLowerCase()===L)-(a.lang.toLowerCase()===L);});
+    var pref=[/samantha|serena|karen|moira|tessa|veena/i,/ava|allison|susan|zoe|joana/i,/aria|jenny|libby|sonia|natasha|clara/i,/google uk english female/i,/zira|hazel|catherine|heera/i,/female/i,/google us english|google .*english/i];
+    var qual=function(v){return /enhanced|premium|natural|neural|online/i.test(v.name)?0:1;};
+    for(var p=0;p<pref.length;p++){var m=en.filter(function(v){return pref[p].test(v.name);});if(m.length){m.sort(function(a,b){return qual(a)-qual(b);});return m[0];}}
+    return en[0]||vs[0];
+  }
+  var USEV=true;
+  function setStat(t){var e=$('vstat');if(e)e.textContent=t;if(!st.running&&st.phase==='ready'){var n=$('next');if(n)n.textContent=t;}}
+  var NOVOICE='Voice can’t play here. In-app viewers usually block it. Open the page in Chrome (Android) or Safari (iPhone), and check your phone’s text-to-speech settings.';
+  function say(t,test){
+    if(!t||(!store.voc&&!test))return;
+    var S=window.speechSynthesis;
+    if(!S||typeof SpeechSynthesisUtterance==='undefined'){if(test)setStat(NOVOICE);return;}
+    var go=function(useV){
+      var u=new SpeechSynthesisUtterance(t),v=useV?(VOICE||(VOICE=pickVoice())):null,ok=false;
+      if(v){u.voice=v;u.lang=v.lang;}else u.lang='en-US';
+      u.rate=.85;u.pitch=1;u.volume=1;
+      u.onstart=function(){ok=true;if(test)setStat('Speaking with '+(v?v.name:'the default voice')+'.');};
+      u.onerror=function(){if(!ok&&useV){USEV=false;go(false);}};
+      try{S.resume();S.speak(u);}catch(e){}
+      setTimeout(function(){if(ok||S.speaking)return;if(useV){USEV=false;try{S.cancel();}catch(e){}go(false);}else if(test)setStat(NOVOICE);},1000);
+    };
+    if(S.speaking||S.pending){try{S.cancel();}catch(e){}setTimeout(function(){go(USEV);},80);}else go(USEV);
+  }
+  function cue(ph,c){
+    if(ph==='squeeze')return 'Squeeze';
+    if(ph==='relax')return (st.rep>=c.n&&c.q)?'Rest, and breathe. Quick squeezes next.':'Relax';
+    if(ph==='fsq')return st.q===1?'Quick squeezes':'';
+    return '';
   }
   function buzz(ms){if(!store.hap)return;try{navigator.vibrate&&navigator.vibrate(ms);}catch(e){}}
   [['snd','snd'],['voc','voc'],['hap','hap']].forEach(function(p){
@@ -290,14 +389,22 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
   function draw(frac){arc.style.strokeDashoffset=C*(1-Math.max(0,Math.min(1,frac)));}
   function orbTo(scale,secs){orb.style.transitionDuration=secs+'s';orb.style.transform='scale('+scale+')';}
   function color(v){stage.style.setProperty('--c',v);}
-  function focus(on){document.body.classList.toggle('focus',on);}
+  function focus(on){
+    var r1=stage.getBoundingClientRect();document.body.classList.toggle('focus',on);var r2=stage.getBoundingClientRect();
+    if(!r1.width||!r2.width||(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))return;
+    var s=r1.width/r2.width,dx=r1.left+r1.width/2-r2.left-r2.width/2,dy=r1.top+r1.height/2-r2.top-r2.height/2;
+    if(Math.abs(s-1)<.01&&Math.abs(dx)<1&&Math.abs(dy)<1)return;
+    stage.style.transition='none';stage.style.transform='translate('+dx+'px,'+dy+'px) scale('+s+')';
+    void stage.offsetWidth;
+    stage.style.transition='transform .55s cubic-bezier(.22,.8,.24,1)';stage.style.transform='';
+  }
 
   function enterPrep(){
     var c=cfg();
     st.phase='prep';st.left=st.dur=3;
     color('var(--idle)');orbTo(1,.3);
     $('phase').textContent='Get ready';$('rep').textContent='';
-    $('next').textContent='First: squeeze for '+c.s+'s';
+    $('next').textContent='First: squeeze for '+c.s+'s';say('Get ready');
   }
   function enter(phase){
     var c=cfg(),f=phase.charAt(0)==='f',sq=phase==='squeeze'||phase==='fsq';
@@ -307,7 +414,7 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
     $('phase').textContent=sq?'Squeeze':'Relax';
     $('rep').textContent=f?'Quick '+st.q+' of '+c.q:'Rep '+st.rep+' of '+c.n;
     $('next').textContent=phase==='squeeze'?(st.rep>=c.n&&!c.q?'Last squeeze':'Next: relax for '+c.r+'s'):phase==='relax'?(st.rep>=c.n?'Quick squeezes next. Breathe and let go fully.':'Next: squeeze for '+c.s+'s'):phase==='fsq'?(st.q>=c.q?'Last one':'Release'):'Quick squeeze';
-    beep(sq?660:440,.18);say(sq?'Squeeze':'Relax');buzz(sq?120:60);
+    beep(sq?660:440,.18);say(cue(phase,c));buzz(sq?120:60);
   }
   function tick(){
     var now=performance.now(),dt=Math.min(1,(now-st.last)/1000);st.last=now;
@@ -335,7 +442,7 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
     $('next').textContent=st.cnt>=st.G?'Daily goal reached. Rest these muscles until tomorrow.':'Nice work. Rest, then come back later today.';
     color('var(--relax)');orbTo(1,.6);draw(1);
     $('go').textContent='Start again';
-    beep(880,.35);say('Session complete');buzz([80,60,80]);
+    beep(880,.35);say('Well done. Session complete.');buzz([80,60,80]);
     toggleLock(false);focus(false);
   }
   var wl=null;
@@ -350,7 +457,7 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
     if(st.phase==='ready'||st.phase==='done'){st.rep=1;enterPrep();}
     else{orb.style.transitionDuration=st.left+'s';orb.style.transform='scale('+((st.phase==='squeeze'||st.phase==='fsq')?MIN:1)+')';}
     try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();}catch(e){}
-    try{if(store.voc&&window.speechSynthesis)speechSynthesis.speak(new SpeechSynthesisUtterance(''));}catch(e){}
+    
     st.running=true;st.last=performance.now();
     st.timer=setInterval(tick,100);
     $('go').textContent='Pause';toggleLock(true);focus(true);
@@ -377,6 +484,53 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
     el.oninput=function(){store.custom[p[1]]=el.value;save();render();if(!st.running)$('count').textContent=cfg().s;};
   });
 
+  function pts(a){var r=[];for(var i=0;i<a.length;i+=2)r.push(a[i]+','+a[i+1]);return r.join(' ');}
+  function setFig(s,p){var L=s.querySelectorAll('polyline'),C=s.querySelectorAll('circle');
+    L[0].setAttribute('points',pts([p[2],p[3],p[4],p[5]]));L[1].setAttribute('points',pts(p.slice(4,10)));L[2].setAttribute('points',pts([p[2],p[3],p[10],p[11],p[12],p[13]]));
+    C[0].setAttribute('cx',p[0]);C[0].setAttribute('cy',p[1]);C[1].setAttribute('cx',p[4]);C[1].setAttribute('cy',p[5]);}
+  var FIG='<line class="fl" x1="8" y1="97" x2="192" y2="97"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><circle class="hd" r="8"/><circle class="tg" r="5"/>';
+  function setFigF(s,p){var L=s.querySelectorAll('polyline'),C=s.querySelectorAll('circle');
+    L[0].setAttribute('points',pts([p[2],p[3],p[4],p[5]]));L[1].setAttribute('points',pts([p[4],p[5],p[6],p[7],p[8],p[9]]));L[2].setAttribute('points',pts([p[4],p[5],p[10],p[11],p[12],p[13]]));
+    L[3].setAttribute('points',pts([p[2],p[3],p[14],p[15],p[16],p[17]]));L[4].setAttribute('points',pts([p[2],p[3],p[18],p[19],p[20],p[21]]));
+    C[0].setAttribute('cx',p[0]);C[0].setAttribute('cy',p[1]);C[1].setAttribute('cx',p[4]);C[1].setAttribute('cy',p[5]);}
+  var FIGF='<line class="fl" x1="8" y1="97" x2="192" y2="97"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><circle class="hd" r="8"/><circle class="tg" r="5"/>';
+  var LY=[28,82,40,86,100,86,125,62,140,86,60,88,78,88];
+  var POS={lying:LY,sitting:[96,20,98,32,92,66,130,64,132,95,106,52,120,60],standing:[100,16,100,28,100,58,101,76,100,95,96,44,98,58]};
+  var EX=[
+   ['Squats','10 reps','Feet shoulder-width apart. Sit your hips back and down with your chest up, then stand tall. Breathe out and gently lift your pelvic floor as you rise.',[[100,16,100,28,100,58,102,77,100,95,112,38,128,38],[84,36,90,48,72,72,110,72,104,95,108,52,128,50]]],
+   ['Glute bridge','10 reps · hold 3s','Lie on your back, knees bent, feet flat. Breathe out, squeeze your glutes and pelvic floor, and lift your hips until shoulders, hips and knees line up. Lower slowly.',[LY,[28,84,42,88,100,58,128,58,142,88,60,90,78,90]]],
+   ['Bird dog','8 reps each side · hold 3s','On hands and knees, reach one arm forward and the opposite leg back, keeping your hips level and your back flat. Hold, return, then switch sides.',[[50,44,60,50,130,50,130,92,155,92,60,72,60,92],[50,42,60,50,130,50,152,52,178,50,44,48,28,46]]],
+   ['Butterfly pose (Baddha Konasana)','30\u201360 seconds','Sit tall with the soles of your feet together and your knees out to the sides. Hold your feet, lengthen your spine and let your knees sink toward the floor as your inner thighs and pelvic floor soften. Shown from the front.',[[100,18,100,32,100,58,88,76,99,88,112,76,101,88,80,62,96,87,120,62,104,87],[100,18,100,32,100,58,54,82,97,90,146,82,103,90,76,70,94,88,124,70,106,88]]],
+   ['Locust pose (Salabhasana)','6 reps · hold 5s','Lie face down with your arms by your sides. Breathe out and lift your chest, arms and legs slightly off the floor, squeezing your glutes. Keep your neck long, then lower slowly.',[[28,86,42,88,100,88,130,88,160,88,60,90,80,90],[26,70,42,76,100,88,132,80,165,72,62,82,84,84]]],
+   ['Clamshell','10 reps each side','Lie on your side, knees bent, heels together. Keep your feet touching and open the top knee like a shell without rolling back. Lower slowly.',[[40,70,52,76,100,80,128,68,142,82,62,84,76,84],[40,70,52,76,100,80,122,52,142,82,62,84,76,84]]],
+   ['Happy baby pose (Ananda Balasana)','30\u201360 seconds','Lie on your back, hold your feet or shins with your knees wide toward your armpits. Rock gently side to side and breathe low into your belly. Shown from the feet end.',[[100,16,100,30,100,64,92,84,92,96,108,84,108,96,84,50,92,84,116,50,108,84],[100,16,100,30,100,64,50,58,60,34,150,58,140,34,72,44,60,36,128,44,140,36]]],
+   ['Child’s pose (Balasana)','30–60 seconds','From hands and knees, sit your hips back toward your heels and rest your forehead down with your arms long. Breathe slowly and let everything release.',[[48,52,62,50,130,50,130,92,155,92,60,72,60,92],[46,84,60,80,150,78,132,92,158,92,48,90,30,92]]],
+   ['Diaphragmatic breathing','10 slow breaths','Lie on your back with knees bent and one hand on your belly. Breathe in through your nose so your belly rises and your pelvic floor softens. Breathe out slowly and let it fall.',[[28,82,40,86,100,86,125,62,140,86,66,84,86,80],[28,82,40,86,100,86,125,62,140,86,66,80,86,72]]],
+   ['Wall sit','3 × 20–30 seconds','Lean your back on a wall and slide down until your knees are about 90 degrees. Keep your weight in your heels, breathe steadily and gently lift your pelvic floor. Slide back up.',[[68,16,68,28,68,58,70,77,74,95,76,40,90,40],[68,36,68,48,68,76,108,76,110,95,84,60,98,66]],1]
+  ];
+  var io=window.IntersectionObserver?new IntersectionObserver(function(es){es.forEach(function(x){x.target._e.vis=x.isIntersecting;});},{rootMargin:'80px'}):null;
+  EX.forEach(function(e,i){var d=document.createElement('div'),F=e[3][0].length>14;d.className='panel ex';d.innerHTML='<svg class="fg" role="img" aria-label="'+e[0]+' demonstration"></svg><h2>'+(i+1)+'. '+e[0]+'</h2><p class="meta">'+e[1]+'</p><p class="note" style="margin:0">'+e[2]+'</p>';$('exlist').appendChild(d);var s=d.querySelector('svg');s.setAttribute('viewBox','0 0 200 110');s.innerHTML=(e[4]?'<line class="fl" x1="62" y1="6" x2="62" y2="97"/>':'')+(F?FIGF:FIG);(F?setFigF:setFig)(s,e[3][0]);e.svg=s;d._e=e;e.vis=!io;if(io)io.observe(d);});
+  Array.prototype.forEach.call(document.querySelectorAll('svg[data-p]'),function(s){s.setAttribute('viewBox','0 0 200 110');s.innerHTML=FIG;setFig(s,POS[s.getAttribute('data-p')]);});
+  var raf=0;
+  function ez(x){return x*x*(3-2*x);}
+  function loop(t){var q=(t/4200)%1,k=q<.38?ez(q/.38):q<.58?1:q<.96?ez(1-(q-.58)/.38):0;
+    EX.forEach(function(e){if(!e.vis)return;var a=e[3][0],b=e[3][1],p=[];for(var i=0;i<a.length;i++)p.push(a[i]+(b[i]-a[i])*k);(a.length>14?setFigF:setFig)(e.svg,p);});raf=requestAnimationFrame(loop);}
+  function animate(on){cancelAnimationFrame(raf);if(on&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))raf=requestAnimationFrame(loop);}
+  var dp=null,inst=$('inst');
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;inst.style.display='block';$('insttxt').textContent='Add Kegely to your home screen for quick, full-screen access.';$('instbtn').style.display='block';});
+  $('instbtn').onclick=function(){if(dp){dp.prompt();dp=null;inst.style.display='none';}};
+  window.addEventListener('appinstalled',function(){inst.style.display='none';});
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var isSA=window.navigator.standalone||(window.matchMedia&&matchMedia('(display-mode:standalone)').matches);
+  if(isIOS&&!isSA){inst.style.display='block';$('insttxt').textContent='In Safari, tap the Share button, then Add to Home Screen. It will open full-screen like an app.';}
+  function fillVoices(){var sel=$('vsel');if(!window.speechSynthesis){setStat(NOVOICE);$('vsel').style.display='none';$('vtest').style.display='none';return;}var vs=speechSynthesis.getVoices().filter(function(v){return /^en/i.test(v.lang);});sel.innerHTML='';var a=document.createElement('option');a.value='';a.textContent='Automatic (calm female)';sel.appendChild(a);vs.forEach(function(v){var o=document.createElement('option');o.value=v.name;o.textContent=v.name+' ('+v.lang+')';sel.appendChild(o);});sel.value=store.vname||'';}
+  if(window.speechSynthesis){speechSynthesis.onvoiceschanged=function(){VOICE=null;fillVoices();};}
+  fillVoices();
+  if(/; wv\)|FBAN|FBAV|Instagram/i.test(navigator.userAgent)&&$('vstat'))$('vstat').textContent=NOVOICE;
+  setTimeout(function(){if(window.speechSynthesis&&!speechSynthesis.getVoices().length&&$('vstat'))$('vstat').textContent='No voices found on this device. Install a text-to-speech voice in your phone settings, then reload.';},2500);
+  $('vsel').onchange=function(){store.vname=this.value;save();VOICE=null;};
+  $('vtest').onclick=function(){setStat('Testing…');say('Squeeze. And relax. Breathe out slowly.',true);};
+  var vb=$('voc'),vold=vb.onclick;vb.onclick=function(){vold();if(store.voc)say('Voice guidance on.',true);};
   render();stats();doReset();show(location.hash.slice(1));
   var gate=$('gate');if(!store.ok)gate.style.display='block';
   $('gok').onclick=function(){store.ok=true;save();gate.style.display='none';};
@@ -386,6 +540,9 @@ main{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px
   document.addEventListener('visibilitychange',function(){if(!document.hidden&&st.running&&!wl)toggleLock(true);});
   tp.onclick=cg;tp.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cg();}};
 })();
+</script>
+<script>
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
 </script>
 </body>
 </html>
