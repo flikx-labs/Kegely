@@ -4,87 +4,198 @@
 
 ### A simple, private pelvic floor trainer.
 
-A free, mobile-friendly Kegel training app for men — with a guided timer, supporting exercises, progress tracking and practical guidance.
+Guided Kegel sessions, supporting exercises, progress tracking and practical technique advice. Free, mobile-friendly, and no account required.
 
-[**Open Kegely**](https://flikx-labs.github.io/Kegely/) · [Install on your phone](#install-the-app) · [How it works](#how-to-use-kegely)
+[![Open the app](https://img.shields.io/badge/%F0%9F%9A%80%20Open%20Kegely-2563eb?style=for-the-badge)](https://flikx-labs.github.io/Kegely/)
+
+![Installable PWA](https://img.shields.io/badge/PWA-installable-5A0FC8?logo=pwa&logoColor=white)
+![No account](https://img.shields.io/badge/account-none-2563eb)
+![Privacy](https://img.shields.io/badge/data-stays%20on%20your%20device-2ea44f)
+![Free](https://img.shields.io/badge/price-free-brightgreen)
+![Hosted on GitHub Pages](https://img.shields.io/badge/hosted%20on-GitHub%20Pages-181717?logo=github)
+
+[Features](#features) · [Quick start](#quick-start) · [How it works](#how-it-works) · [Install](#install-on-your-phone) · [Privacy](#privacy) · [FAQ](#faq)
 
 </div>
 
 ---
 
-## Screenshots
+<table align="center">
+  <tr>
+    <td align="center"><img src="docs/screenshots/timer.png" alt="Kegely guided training timer" width="220"><br><sub><b>Guided timer</b></sub></td>
+    <td align="center"><img src="docs/screenshots/exercises.png" alt="Kegely supporting exercises" width="220"><br><sub><b>Supporting exercises</b></sub></td>
+    <td align="center"><img src="docs/screenshots/progress.png" alt="Kegely progress dashboard" width="220"><br><sub><b>Progress dashboard</b></sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/guide.png" alt="Kegely guide and voice settings" width="220"><br><sub><b>Guide &amp; voice settings</b></sub></td>
+    <td align="center"><img src="docs/screenshots/reminders.png" alt="Kegely daily reminders" width="220"><br><sub><b>Daily reminders</b></sub></td>
+    <td></td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="docs/screenshots/timer.png" alt="Kegely guided training timer" width="245">
-  &nbsp;&nbsp;
-  <img src="docs/screenshots/exercises.png" alt="Kegely supporting exercises" width="245">
-  &nbsp;&nbsp;
-  <img src="docs/screenshots/progress.png" alt="Kegely progress dashboard" width="245">
-</p>
-<p align="center">
-  <img src="docs/screenshots/guide.png" alt="Kegely guide and voice settings" width="245">
-  &nbsp;&nbsp;
-  <img src="docs/screenshots/reminders.png" alt="Kegely daily reminders" width="245">
-</p>
+## Why Kegely?
+
+Pelvic floor training is simple in theory and surprisingly hard to keep up in practice. Kegely takes care of the parts that make it hard:
+
+- **Pacing.** A breathing orb, countdown and progress ring tell you exactly when to squeeze and when to let go.
+- **Consistency.** Streaks, weekly activity and reminders help the habit stick.
+- **Technique.** A built-in guide covers finding the right muscles and avoiding common mistakes.
+- **Privacy.** There is no sign-up, no backend and no analytics. Your data never leaves your device.
 
 ## Features
 
-- **Guided training timer** — a visual breathing orb, countdown and progress ring guide each squeeze and relaxation phase.
-- **Flexible training levels** — choose Beginner, Intermediate, Advanced or create a Custom routine with your own timings and repetitions.
-- **Multiple cues** — enable or disable sound, voice guidance and vibration.
-- **Supporting exercises** — ten gentle movements, including squats, glute bridges, bird dogs and child's pose. These complement pelvic floor training; they are not Kegels themselves.
-- **Progress tracking** — view completed sessions, daily streak, weekly activity, time trained, a 7-day chart and a 5-week activity grid.
-- **Daily reminders** — add multiple reminder times and manage each one individually.
-- **Voice guidance** — choose between Nora and Maya. Speech uses the voices available on your device.
-- **Practical guide** — learn how to find the right muscles, avoid common mistakes and build up gradually.
-- **Installable PWA** — add Kegely to your phone's home screen and use its offline app experience.
-- **Light and dark themes** — follows your device's appearance setting.
+| | Feature | What you get |
+|---|---|---|
+| ⏱️ | **Guided training timer** | A visual breathing orb, countdown and progress ring for every squeeze and relax phase |
+| 🎚️ | **Flexible levels** | Beginner, Intermediate, Advanced, or a Custom routine with your own timings and repetitions |
+| 🔔 | **Multiple cues** | Turn sound, voice guidance and vibration on or off independently |
+| 🗣️ | **Voice guidance** | Choose between **Nora** and **Maya**, using the speech voices available on your device |
+| 🧘 | **Supporting exercises** | Ten gentle movements, including squats, glute bridges, bird dogs and child's pose |
+| 📈 | **Progress tracking** | Completed sessions, daily streak, weekly activity, time trained, a 7-day chart and a 5-week activity grid |
+| ⏰ | **Daily reminders** | Add multiple reminder times and manage each one individually |
+| 📖 | **Practical guide** | Find the right muscles, avoid common mistakes and build up gradually |
+| 📱 | **Installable PWA** | Add it to your home screen for an app-like, offline-friendly experience |
+| 🌗 | **Light and dark themes** | Follows your device's appearance setting |
 
-## Try it
+> [!NOTE]
+> The supporting exercises complement pelvic floor training. They are not Kegels themselves.
 
-**Live app:** https://flikx-labs.github.io/Kegely/
+## Quick start
 
-No account or sign-up is needed. Open the link in your browser to get started.
+1. Open **https://flikx-labs.github.io/Kegely/** in your browser.
+2. Pick a training level (or build a custom routine).
+3. Press start and follow the orb.
 
-## Install the app
+That's it. No account, no download, no setup.
 
-Kegely is a Progressive Web App (PWA), so you can add it to your home screen.
+## How it works
 
-- **iPhone / iPad:** Open the site in Safari, tap **Share**, then choose **Add to Home Screen**.
-- **Android:** Open the site in Chrome and choose **Install app** from the browser menu or the install prompt.
+```mermaid
+flowchart LR
+    A([Choose a level]) --> B[Squeeze<br/>gently lift and tighten]
+    B --> C[Relax<br/>release fully]
+    C --> D{More reps?}
+    D -- Yes --> B
+    D -- No --> E([Session saved to Progress])
+```
 
-For the best experience, open the app in your device's main browser rather than an in-app browser.
-
-## Privacy
-
-Kegely is designed to work without an account or backend. Training history, preferences and reminders are stored locally in your browser on your device. There is no user account or analytics system.
-
-The app may request notification permission when you enable reminders. Voice guidance uses your browser/device's built-in speech synthesis.
-
-## Reminders: an important note
-
-Browser reminders can appear while Kegely is open or running in the background. Mobile operating systems may pause a fully closed browser app, so browser notifications are not guaranteed to fire at an exact time in that situation.
-
-For more reliable scheduled alerts, use **Add to calendar** on the reminders screen. This adds repeating daily events to your phone's calendar.
-
-## How to use Kegely
-
-1. Choose a training level or configure your own timings.
+1. **Choose a training level** or configure your own timings.
 2. During **Squeeze**, gently lift and tighten your pelvic floor while breathing normally.
 3. During **Relax**, release fully before the next repetition.
 4. Complete the slow holds and quick squeezes at a comfortable pace.
-5. Use the Exercises and Guide sections for supporting movements and technique advice.
-6. Check Progress to follow your consistency over time.
+5. Use the **Exercises** and **Guide** sections for supporting movements and technique advice.
+6. Check **Progress** to follow your consistency over time.
 
-Keep your stomach, thighs and buttocks relaxed. Avoid holding your breath, and do not squeeze as hard as possible.
+### Technique at a glance
+
+| ✅ Do | ❌ Don't |
+|---|---|
+| Keep your stomach, thighs and buttocks relaxed | Clench your stomach, thighs or buttocks |
+| Breathe normally throughout | Hold your breath |
+| Squeeze gently and lift | Squeeze as hard as possible |
+| Release fully between repetitions | Rush into the next rep without relaxing |
+| Build up gradually | Push through pain |
+
+## Install on your phone
+
+Kegely is a Progressive Web App, so it can live on your home screen like a native app.
+
+| Device | Steps |
+|---|---|
+| **iPhone / iPad** | Open the site in **Safari**, tap **Share**, then choose **Add to Home Screen** |
+| **Android** | Open the site in **Chrome**, then choose **Install app** from the browser menu or the install prompt |
+
+> [!TIP]
+> For the best experience, open Kegely in your device's main browser rather than an in-app browser.
+
+## Privacy
+
+Kegely is designed to work without an account or a backend.
+
+| Data | Where it lives |
+|---|---|
+| Training history | Locally in your browser, on your device |
+| Preferences | Locally in your browser, on your device |
+| Reminders | Locally in your browser, on your device |
+| Accounts | None. There is no sign-up |
+| Analytics | None. There is no tracking |
+
+The app may ask for **notification permission** when you enable reminders. Voice guidance uses your browser's built-in speech synthesis.
+
+## Reminders: an important note
+
+> [!IMPORTANT]
+> Browser notifications can appear while Kegely is open or running in the background. Mobile operating systems may pause a fully closed browser app, so browser notifications are **not guaranteed** to fire at an exact time in that situation.
+
+For reliable scheduled alerts, use **Add to calendar** on the reminders screen. It adds repeating daily events to your phone's calendar.
+
+## FAQ
+
+<details>
+<summary><b>Do I need to create an account?</b></summary>
+
+No. Open the link and start training. Nothing to sign up for.
+</details>
+
+<details>
+<summary><b>Where is my progress stored?</b></summary>
+
+Locally in your browser on your device. Because of that, clearing your browser data will also clear your history, and progress does not sync between devices.
+</details>
+
+<details>
+<summary><b>Does it work offline?</b></summary>
+
+Once installed as a PWA, Kegely offers an offline app experience.
+</details>
+
+<details>
+<summary><b>Why didn't my reminder fire?</b></summary>
+
+Mobile operating systems can pause a fully closed browser app, which stops browser notifications. Use **Add to calendar** on the reminders screen for dependable daily alerts.
+</details>
+
+<details>
+<summary><b>The voice sounds different on my phone.</b></summary>
+
+Nora and Maya use the speech voices available on your device, so exact sound varies by phone and browser.
+</details>
+
+<details>
+<summary><b>Is this right for me?</b></summary>
+
+Not necessarily. See the medical disclaimer below, and speak with a doctor or pelvic floor physiotherapist if any of those situations apply to you.
+</details>
+
+## Run it locally
+
+Kegely is a lightweight web app built with standard web technologies, so you can serve it with any static file server:
+
+```bash
+git clone https://github.com/flikx-labs/Kegely.git
+cd Kegely
+python3 -m http.server 8000
+```
+
+Then open <http://localhost:8000>. Serve it over `localhost` or HTTPS so PWA features such as installation and offline support can work.
+
+## Feedback and contributions
+
+Found a bug or have an idea? [Open an issue](https://github.com/flikx-labs/Kegely/issues). Suggestions on technique content, accessibility and device compatibility are especially welcome.
 
 ## Medical disclaimer
 
-Kegely is an educational fitness tool, not medical advice or a substitute for professional care. Kegel exercises are not suitable for everyone. If you have pelvic pain, pain during sex, difficulty relaxing these muscles, urinary symptoms, or a history of prostate or pelvic surgery, speak with a doctor or pelvic floor physiotherapist before starting. Stop if anything hurts or symptoms get worse.
-
-## Built with
-
-Kegely is a lightweight web app built with standard web technologies and delivered as a Progressive Web App. It is hosted on **GitHub Pages**.
+> [!WARNING]
+> Kegely is an educational fitness tool, not medical advice or a substitute for professional care. Kegel exercises are not suitable for everyone.
+>
+> Speak with a doctor or pelvic floor physiotherapist **before starting** if you have:
+> - pelvic pain
+> - pain during sex
+> - difficulty relaxing these muscles
+> - urinary symptoms
+> - a history of prostate or pelvic surgery
+>
+> **Stop if anything hurts or your symptoms get worse.**
 
 ---
 
