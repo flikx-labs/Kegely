@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
 <title>Kegely for Men</title>
 <meta name="description" content="A pelvic floor (Kegel) trainer for men: a guided squeeze and relax timer, exercises and a clear guide. Free and private.">
 <meta name="theme-color" content="#f2f4f9" media="(prefers-color-scheme: light)">
@@ -175,13 +175,30 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 @supports (width:1cqw){.mid{container-type:size}#count,.focus #count{font-size:clamp(2rem,22cqw,7.5rem)}#phase,.focus #phase{font-size:clamp(.9rem,6.2cqw,1.7rem)}#rep{font-size:clamp(.68rem,4cqw,.95rem)}}
 .ex{content-visibility:auto;contain-intrinsic-size:auto 280px}
 #vsel{width:100%;padding:12px;border-radius:14px;border:1px solid var(--gb);background:var(--g);color:var(--ink);font-size:16px}
+html{overflow-x:hidden}@supports (overflow:clip){html{overflow-x:clip}}
+body::before{inset:0}
+@supports (color:color-mix(in srgb,red,blue)){.stage::before{inset:-6%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 26%,transparent) 0,transparent 70%)}}
+.chips{--pl:max(20px,env(safe-area-inset-left,0px));--pr:max(20px,env(safe-area-inset-right,0px));--fl:0px;--fr:0px;margin:0 calc(-1*var(--pr)) 0 calc(-1*var(--pl));padding:0 var(--pr) 4px var(--pl);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--fl),#000 calc(100% - var(--fr)),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 var(--fl),#000 calc(100% - var(--fr)),transparent 100%)}
+.chips.l{--fl:28px}.chips.r{--fr:44px}
+.hr{display:flex;align-items:center;gap:8px}
+.btn.bell{padding:0;width:40px;height:40px;border-radius:99px;display:grid;place-items:center;flex:none}.bell svg{width:20px;height:20px}
+.rrow{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.rt{flex:1;display:flex;flex-direction:column}
+.rrow input{font-size:1.5rem;font-weight:800;background:none;border:0;color:var(--ink);padding:0;width:8.5rem;font-variant-numeric:tabular-nums}
+.rtog,.rdel{border:1px solid var(--gb);background:var(--g);border-radius:99px;padding:7px 14px;font-size:.85rem;color:var(--muted)}
+.rtog[aria-pressed="true"]{background:var(--squeeze);color:var(--onorb);border-color:transparent;font-weight:600}
+.rdel{width:36px;height:36px;padding:0;font-size:1.2rem;line-height:1}
+.vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.vgrid button{text-align:left;border:1px solid var(--gb);background:var(--g);border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:1px}
+.vgrid b{font-weight:700}.vgrid span{font-size:.75rem;color:var(--muted)}
+.vgrid button[aria-pressed="true"]{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 12%,transparent)}
 </style>
 </head>
 <body>
 <main>
 <header>
   <h1>Kegely<span class="tag">for men</span></h1>
-  <div class="today" id="today" aria-label="Sessions today"><span>Today</span><i></i><i></i><i></i></div>
+  <div class="hr"><button class="btn bell" id="bell" aria-label="Reminders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 21h4"/></svg></button><div class="today" id="today" aria-label="Sessions today"><span>Today</span><i></i><i></i><i></i></div></div>
 </header>
 
 <section class="view on" id="v-timer">
@@ -228,9 +245,20 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   <p class="note">Saved only in this browser. <button class="link" id="clear">Clear history</button></p>
 </section>
 
+<section class="view" id="v-remind">
+  <button class="link" id="rback" style="align-self:flex-start;margin-bottom:10px">‹ Back</button>
+  <h2>Daily reminders</h2>
+  <p class="note" style="margin:0 0 12px">Add as many times as you like. Kegely nudges you at each one.</p>
+  <div class="panel" id="rperm" style="margin:0 0 12px;display:none"><p class="note" id="rpermtxt" style="margin:0 0 10px"></p><button class="btn main" id="rpermbtn" style="width:100%;display:none">Allow notifications</button></div>
+  <div id="rlist"></div>
+  <button class="btn" id="radd" style="width:100%;margin-top:12px">+ Add reminder</button>
+  <button class="btn" id="rcal" style="width:100%;margin-top:10px;display:none">Add to calendar</button>
+  <p class="note">Reminders appear while Kegely is open or running in the background. Phones can pause apps that are fully closed, so for exact-time alerts use “Add to calendar”, which sets a repeating daily event on your phone.</p>
+</section>
+
 <section class="view guide" id="v-guide">
   <div class="panel" id="inst" style="display:none;margin-top:0"><h2>Install the app</h2><p class="note" id="insttxt" style="margin:0 0 10px"></p><button class="btn main" id="instbtn" style="width:100%;display:none">Install</button></div>
-  <div class="panel" id="vp" style="margin-top:0"><h2>Voice guidance</h2><p class="note" style="margin:0 0 10px">Choose a voice you find calm. The list depends on the voices installed on your phone.</p><select id="vsel" aria-label="Voice"></select><button class="btn" id="vtest" style="width:100%;margin-top:10px">Test voice</button><p class="note" id="vstat" style="margin:10px 0 0"></p></div>
+  <div class="panel" id="vp" style="margin-top:0"><h2>Voice guidance</h2><p class="note" style="margin:0 0 10px">Tap a voice to pick it and hear it. Voices use your phone’s built-in speech, so exact sound can vary by device.</p><div class="vgrid" id="vgrid" role="group" aria-label="Voice"></div><button class="btn" id="vtest" style="width:100%;margin-top:10px">Test voice</button><p class="note" id="vstat" style="margin:10px 0 0"></p></div>
   <h2>How to use it</h2>
   <div class="panel" style="margin-top:0">
     <ol>
@@ -267,7 +295,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   var LEVELS={Beginner:{s:3,r:5,n:8,q:5},Intermediate:{s:5,r:5,n:10,q:8},Advanced:{s:8,r:8,n:10,q:10},Custom:null};
   var KEY='kegel-clone-v1',GOAL=3;
   var $=function(id){return document.getElementById(id)};
-  var store={sessions:[],level:'Beginner',custom:{s:4,r:6,n:10,q:5,b:10},snd:true,voc:false,hap:true};
+  var store={sessions:[],level:'Beginner',custom:{s:4,r:6,n:10,q:5,b:10},snd:true,voc:false,hap:true,rem:[],fired:{},vp:'aria'};
   try{var raw=localStorage.getItem(KEY);if(raw){var d=JSON.parse(raw);if(d&&typeof d==='object')for(var k in d)store[k]=d[k];}}catch(e){}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
 
@@ -284,10 +312,10 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   function totalSecs(c){return c.n*c.s+(c.n-1)*c.r+(c.q?c.b+c.q*2-1:0);}
 
   /* navigation */
-  var VIEWS=['timer','moves','progress','guide'];
+  var VIEWS=['timer','moves','progress','guide','remind'];
   function show(v){
     if(VIEWS.indexOf(v)<0)v='timer';animate(v==='moves');
-    VIEWS.forEach(function(n){$('v-'+n).classList.toggle('on',n===v);});
+    VIEWS.forEach(function(n){$('v-'+n).classList.toggle('on',n===v);});if(v==='remind')renderRem();
     Array.prototype.forEach.call($('nav').children,function(b){if(b.dataset.v===v)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
   }
   Array.prototype.forEach.call($('nav').children,function(b){b.onclick=function(){location.hash=b.dataset.v;show(b.dataset.v);};});
@@ -298,7 +326,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   Object.keys(LEVELS).forEach(function(name){
     var b=document.createElement('button');
     b.textContent=name;
-    b.onclick=function(){if(st.running)return;level=name;store.level=name;save();render();doReset();};
+    b.onclick=function(){if(st.running)return;level=name;store.level=name;save();render();doReset();b.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});};
     tabs.appendChild(b);
   });
   function render(){
@@ -332,7 +360,7 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   /* cues */
   var ac=null;
   function beep(freq,dur){
-    if(!store.snd)return;
+    if(!store.snd||(store.voc&&dur<.3))return;
     try{
       ac=ac||new (window.AudioContext||window.webkitAudioContext)();
       var o=ac.createOscillator(),g=ac.createGain();
@@ -343,35 +371,46 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
       o.start();o.stop(ac.currentTime+dur+.02);
     }catch(e){}
   }
-  var VOICE=null;
-  function pickVoice(){
+  var NOVOICE='Voice can’t play here. In-app viewers usually block it. Open the page in Chrome (Android) or Safari (iPhone), and check your phone’s text-to-speech settings.';
+  function setStat(t){var e=$('vstat');if(e)e.textContent=t;if(!st.running&&st.phase==='ready'){var n=$('next');if(n)n.textContent=t;}}
+  var PERS=[
+    {id:'aria',name:'Aria',g:'f',d:'calm, warm',pitch:1.08,rate:.92},
+    {id:'nora',name:'Nora',g:'f',d:'soft, slow',pitch:1,rate:.86},
+    {id:'maya',name:'Maya',g:'f',d:'bright, clear',pitch:1.18,rate:.98},
+    {id:'leo',name:'Leo',g:'m',d:'deep, steady',pitch:.85,rate:.92},
+    {id:'ethan',name:'Ethan',g:'m',d:'clear, friendly',pitch:.9,rate:.98},
+    {id:'kai',name:'Kai',g:'m',d:'low, relaxed',pitch:.75,rate:.86}];
+  var FEM=/female|woman|samantha|karen|moira|tessa|serena|susan|zira|hazel|aria|jenny|\bava\b|allison|libby|sonia|natasha|clara|catherine|heera|veena|fiona|victoria|kate|joana|zoe|\bamy\b|emma|joanna|salli|kimberly|nicole|olivia/i;
+  var MAL=/\bmale\b|daniel|\balex\b|\bfred\b|\bthomas\b|oliver|rishi|\bdavid\b|\bmark\b|george|james|ryan|\bguy\b|ravi|aaron|arthur|gordon|brian|matthew|geraint/i;
+  var VC={};
+  function persona(id){for(var i=0;i<PERS.length;i++)if(PERS[i].id===id)return PERS[i];return PERS[0];}
+  function voiceFor(p){
+    if(VC[p.id]!==undefined)return VC[p.id];
     var vs=(window.speechSynthesis&&speechSynthesis.getVoices())||[];
     if(!vs.length)return null;
-    if(store.vname){for(var i=0;i<vs.length;i++)if(vs[i].name===store.vname)return vs[i];}
-    var L=(navigator.language||'en').toLowerCase();
-    var en=vs.filter(function(v){return /^en/i.test(v.lang);}).sort(function(a,b){return (b.lang.toLowerCase()===L)-(a.lang.toLowerCase()===L);});
-    var pref=[/samantha|serena|karen|moira|tessa|veena/i,/ava|allison|susan|zoe|joana/i,/aria|jenny|libby|sonia|natasha|clara/i,/google uk english female/i,/zira|hazel|catherine|heera/i,/female/i,/google us english|google .*english/i];
-    var qual=function(v){return /enhanced|premium|natural|neural|online/i.test(v.name)?0:1;};
-    for(var p=0;p<pref.length;p++){var m=en.filter(function(v){return pref[p].test(v.name);});if(m.length){m.sort(function(a,b){return qual(a)-qual(b);});return m[0];}}
-    return en[0]||vs[0];
+    var L=(navigator.language||'en-US').toLowerCase(),nl=function(v){return v.lang.toLowerCase().replace('_','-');};
+    var en=vs.filter(function(v){return /^en/.test(nl(v));});
+    if(!en.length)en=vs.slice();
+    var sc=function(v){return (v.localService?0:4)+(nl(v)===L?0:2)+(/^en-(us|gb)/.test(nl(v))?0:1);};
+    en.sort(function(a,b){return sc(a)-sc(b)||((a.name+a.voiceURI)<(b.name+b.voiceURI)?-1:1);});
+    var pool=en.filter(function(v){return p.g==='f'?FEM.test(v.name):(MAL.test(v.name)&&!FEM.test(v.name));}),shared=!pool.length;
+    if(shared)pool=en;
+    var idx=PERS.filter(function(x){return x.g===p.g;}).indexOf(p)+(shared&&p.g==='m'?3:0);
+    return (VC[p.id]=pool[idx%pool.length]||null);
   }
-  var USEV=true;
-  function setStat(t){var e=$('vstat');if(e)e.textContent=t;if(!st.running&&st.phase==='ready'){var n=$('next');if(n)n.textContent=t;}}
-  var NOVOICE='Voice can’t play here. In-app viewers usually block it. Open the page in Chrome (Android) or Safari (iPhone), and check your phone’s text-to-speech settings.';
   function say(t,test){
     if(!t||(!store.voc&&!test))return;
     var S=window.speechSynthesis;
     if(!S||typeof SpeechSynthesisUtterance==='undefined'){if(test)setStat(NOVOICE);return;}
-    var go=function(useV){
-      var u=new SpeechSynthesisUtterance(t),v=useV?(VOICE||(VOICE=pickVoice())):null,ok=false;
-      if(v){u.voice=v;u.lang=v.lang;}else u.lang='en-US';
-      u.rate=.85;u.pitch=1;u.volume=1;
-      u.onstart=function(){ok=true;if(test)setStat('Speaking with '+(v?v.name:'the default voice')+'.');};
-      u.onerror=function(){if(!ok&&useV){USEV=false;go(false);}};
-      try{S.resume();S.speak(u);}catch(e){}
-      setTimeout(function(){if(ok||S.speaking)return;if(useV){USEV=false;try{S.cancel();}catch(e){}go(false);}else if(test)setStat(NOVOICE);},1000);
-    };
-    if(S.speaking||S.pending){try{S.cancel();}catch(e){}setTimeout(function(){go(USEV);},80);}else go(USEV);
+    var p=persona(store.vp),v=voiceFor(p),u=new SpeechSynthesisUtterance(t);
+    if(v){u.voice=v;u.lang=v.lang;}else u.lang='en-US';
+    u.rate=p.rate;u.pitch=p.pitch;u.volume=1;
+    u.onstart=function(){if(test)setStat('Speaking as '+p.name+'.');};
+    u.onerror=function(e){if(test&&e.error!=='interrupted'&&e.error!=='canceled')setStat(NOVOICE);};
+    try{
+      if(S.speaking||S.pending){S.cancel();setTimeout(function(){try{S.speak(u);}catch(e){}},60);}
+      else{if(S.paused)S.resume();S.speak(u);}
+    }catch(e){}
   }
   function cue(ph,c){
     if(ph==='squeeze')return 'Squeeze';
@@ -523,14 +562,91 @@ main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   var isSA=window.navigator.standalone||(window.matchMedia&&matchMedia('(display-mode:standalone)').matches);
   if(isIOS&&!isSA){inst.style.display='block';$('insttxt').textContent='In Safari, tap the Share button, then Add to Home Screen. It will open full-screen like an app.';}
-  function fillVoices(){var sel=$('vsel');if(!window.speechSynthesis){setStat(NOVOICE);$('vsel').style.display='none';$('vtest').style.display='none';return;}var vs=speechSynthesis.getVoices().filter(function(v){return /^en/i.test(v.lang);});sel.innerHTML='';var a=document.createElement('option');a.value='';a.textContent='Automatic (calm female)';sel.appendChild(a);vs.forEach(function(v){var o=document.createElement('option');o.value=v.name;o.textContent=v.name+' ('+v.lang+')';sel.appendChild(o);});sel.value=store.vname||'';}
-  if(window.speechSynthesis){speechSynthesis.onvoiceschanged=function(){VOICE=null;fillVoices();};}
+  function fillVoices(){
+    var g=$('vgrid');if(!g)return;
+    if(!window.speechSynthesis){setStat(NOVOICE);g.style.display='none';$('vtest').style.display='none';return;}
+    g.innerHTML='';
+    PERS.forEach(function(p){var b=document.createElement('button');b.innerHTML='<b>'+p.name+'</b><span>'+(p.g==='f'?'Female':'Male')+' · '+p.d+'</span>';b.setAttribute('aria-pressed',p.id===store.vp);b.onclick=function(){store.vp=p.id;save();fillVoices();setStat('Testing…');say('Hi, I’m '+p.name+'. Squeeze, and relax.',true);};g.appendChild(b);});
+  }
+  if(window.speechSynthesis){speechSynthesis.onvoiceschanged=function(){VC={};};}
   fillVoices();
   if(/; wv\)|FBAN|FBAV|Instagram/i.test(navigator.userAgent)&&$('vstat'))$('vstat').textContent=NOVOICE;
   setTimeout(function(){if(window.speechSynthesis&&!speechSynthesis.getVoices().length&&$('vstat'))$('vstat').textContent='No voices found on this device. Install a text-to-speech voice in your phone settings, then reload.';},2500);
-  $('vsel').onchange=function(){store.vname=this.value;save();VOICE=null;};
   $('vtest').onclick=function(){setStat('Testing…');say('Squeeze. And relax. Breathe out slowly.',true);};
   var vb=$('voc'),vold=vb.onclick;vb.onclick=function(){vold();if(store.voc)say('Voice guidance on.',true);};
+  /* reminders */
+  var RD=['08:00','13:00','20:00','10:00','16:00','22:00'];
+  function p2(n){return String(n).padStart(2,'0');}
+  function partOf(t){var h=+t.split(':')[0];return h<5?'Night':h<12?'Morning':h<17?'Afternoon':h<21?'Evening':'Night';}
+  function arm(r){var n=new Date(),q=r.t.split(':');if((+q[0])*60+(+q[1])<=n.getHours()*60+n.getMinutes())store.fired[r.id]=today();else delete store.fired[r.id];}
+  function remNotify(r){
+    var o={body:'Time for your Kegel session. Tap to start.',icon:'icon-192.png',badge:'icon-192.png',tag:'kegely-'+r.id,data:{url:'./#timer'}};
+    try{if(navigator.serviceWorker&&navigator.serviceWorker.ready){navigator.serviceWorker.ready.then(function(g){g.showNotification('Kegely',o);});}else new Notification('Kegely',o);}catch(e){}
+  }
+  function remTick(){
+    if(!window.Notification||Notification.permission!=='granted')return;
+    var n=new Date(),d=today(),m=n.getHours()*60+n.getMinutes();
+    store.rem.forEach(function(r){
+      if(!r.on||store.fired[r.id]===d)return;
+      var q=r.t.split(':'),rm=(+q[0])*60+(+q[1]);
+      if(m>=rm&&m-rm<=60){store.fired[r.id]=d;save();remNotify(r);}
+    });
+  }
+  setInterval(remTick,20000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)remTick();});
+  function askPerm(){try{if(window.Notification&&Notification.permission==='default')Notification.requestPermission().then(renderRem);}catch(e){}}
+  function renderRem(){
+    var L=$('rlist');L.innerHTML='';
+    var perm=window.Notification?Notification.permission:'unsupported';
+    $('rperm').style.display=perm==='granted'?'none':'block';
+    $('rpermbtn').style.display=perm==='default'?'block':'none';
+    $('rpermtxt').textContent=perm==='denied'?'Notifications are blocked. Turn them on for Kegely in your phone or browser settings.':perm==='unsupported'?'This browser can’t show notifications. Use “Add to calendar” below instead.':'Allow notifications so Kegely can remind you.';
+    $('rcal').style.display=store.rem.some(function(r){return r.on;})?'block':'none';
+    if(!store.rem.length)L.innerHTML='<p class="note">No reminders yet. Tap “Add reminder” to set one.</p>';
+    store.rem.slice().sort(function(a,b){return a.t<b.t?-1:a.t>b.t?1:0;}).forEach(function(r){
+      var row=document.createElement('div');row.className='panel rrow';
+      row.innerHTML='<div class="rt"><input type="time" aria-label="Reminder time"><span class="note" style="margin:0"></span></div><button class="rtog"></button><button class="rdel" aria-label="Delete reminder">×</button>';
+      var inp=row.querySelector('input'),tg=row.querySelector('.rtog');
+      inp.value=r.t;row.querySelector('span').textContent=partOf(r.t);
+      tg.setAttribute('aria-pressed',!!r.on);tg.textContent=r.on?'On':'Off';
+      inp.onchange=function(){if(!inp.value)return;r.t=inp.value;arm(r);save();renderRem();};
+      tg.onclick=function(){r.on=!r.on;if(r.on)arm(r);save();renderRem();};
+      row.querySelector('.rdel').onclick=function(){store.rem=store.rem.filter(function(x){return x!==r;});delete store.fired[r.id];save();renderRem();};
+      L.appendChild(row);
+    });
+  }
+  $('radd').onclick=function(){
+    if(store.rem.length>=8)return;
+    var used={};store.rem.forEach(function(r){used[r.t]=1;});
+    var r={id:Date.now().toString(36),t:RD.filter(function(x){return !used[x];})[0]||'18:00',on:true};
+    arm(r);store.rem.push(r);save();renderRem();askPerm();
+  };
+  $('rpermbtn').onclick=askPerm;
+  $('bell').onclick=function(){location.hash='remind';show('remind');};
+  $('rback').onclick=function(){location.hash='timer';show('timer');};
+  $('rcal').onclick=function(){
+    var z=new Date(),ds=z.getFullYear()+p2(z.getMonth()+1)+p2(z.getDate()),ts=z.toISOString().replace(/[-:]/g,'').slice(0,15)+'Z';
+    var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Kegely//Reminders//EN'];
+    store.rem.filter(function(r){return r.on;}).forEach(function(r){
+      L.push('BEGIN:VEVENT','UID:'+r.id+'@kegely','DTSTAMP:'+ts,'DTSTART:'+ds+'T'+r.t.replace(':','')+'00','DURATION:PT10M','RRULE:FREQ=DAILY','SUMMARY:Kegel session','BEGIN:VALARM','TRIGGER:PT0S','ACTION:DISPLAY','DESCRIPTION:Kegel session','END:VALARM','END:VEVENT');
+    });
+    L.push('END:VCALENDAR');
+    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.join('\r\n')],{type:'text/calendar'}));a.download='kegely-reminders.ics';document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1000);
+  };
+  remTick();
+
+  /* level chips: fade edges + one-time nudge so people see it scrolls */
+  function chipFade(){var m=tabs.scrollWidth-tabs.clientWidth;tabs.classList.toggle('l',tabs.scrollLeft>4);tabs.classList.toggle('r',tabs.scrollLeft<m-4);}
+  tabs.addEventListener('scroll',chipFade,{passive:true});window.addEventListener('resize',chipFade);window.addEventListener('load',chipFade);
+  ['touchmove','wheel'].forEach(function(ev){tabs.addEventListener(ev,function(){if(!store.sw){store.sw=1;save();}},{passive:true});});
+  setTimeout(function(){
+    chipFade();
+    if(level==='Custom'){var cur=tabs.querySelector('[aria-pressed="true"]');if(cur)cur.scrollIntoView({inline:'center',block:'nearest'});return;}
+    if(store.sw||(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))return;
+    tabs.scrollTo({left:70,behavior:'smooth'});setTimeout(function(){tabs.scrollTo({left:0,behavior:'smooth'});},900);
+  },900);
+
   render();stats();doReset();show(location.hash.slice(1));
   var gate=$('gate');if(!store.ok)gate.style.display='block';
   $('gok').onclick=function(){store.ok=true;save();gate.style.display='none';};
