@@ -142,7 +142,7 @@ body.cust{--ex:74px}
 .stage{margin:10px auto 6px;width:max(150px,min(320px,84vw,calc(100vh - 400px - var(--ex,0px))));height:max(150px,min(320px,84vw,calc(100vh - 400px - var(--ex,0px))))}
 @supports (height:100dvh){.stage{width:max(150px,min(320px,84vw,calc(100dvh - 400px - var(--ex,0px))));height:max(150px,min(320px,84vw,calc(100dvh - 400px - var(--ex,0px))))}}
 nav{grid-template-columns:repeat(4,1fr)}
-.ex svg{width:100%;height:auto;border-radius:16px;background:rgba(127,127,127,.08)}
+.ex svg{width:100%;height:auto;border-radius:16px;background:radial-gradient(120% 95% at 50% 15%,rgba(130,145,175,.15),rgba(25,30,45,.18))}
 .fl{stroke:var(--line);stroke-width:2;stroke-linecap:round}
 .lb{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
 .hd{fill:var(--ink)}
@@ -151,7 +151,7 @@ nav{grid-template-columns:repeat(4,1fr)}
 .ex h2{margin:10px 0 2px}
 .pos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .pos figure{margin:0;text-align:center;font-size:.78rem;color:var(--muted)}
-.pos svg{width:100%;height:auto;border-radius:12px;background:rgba(127,127,127,.08)}
+.pos svg{width:100%;height:auto;border-radius:12px;background:radial-gradient(120% 95% at 50% 15%,rgba(130,145,175,.15),rgba(25,30,45,.18))}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.panel,.tile,.today,.btn,.opts button,.custom input,nav{background:var(--panel)}}
 .tag{display:block;font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:1px}
 .stage{transition:width .4s,height .4s}
@@ -196,6 +196,89 @@ body::before{inset:0}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">
+  <defs>
+    <linearGradient id="h3d-skin" x1="0%" y1="0%" x2="88%" y2="100%">
+      <stop offset="0%" stop-color="#ffe1cb"/>
+      <stop offset="28%" stop-color="#f3bea0"/>
+      <stop offset="62%" stop-color="#d49170"/>
+      <stop offset="88%" stop-color="#9e5d40"/>
+      <stop offset="100%" stop-color="#c68262"/>
+    </linearGradient>
+    <linearGradient id="h3d-skin-far" x1="0%" y1="0%" x2="88%" y2="100%">
+      <stop offset="0%" stop-color="#cfa086"/>
+      <stop offset="48%" stop-color="#a26c52"/>
+      <stop offset="88%" stop-color="#6e412c"/>
+      <stop offset="100%" stop-color="#583220"/>
+    </linearGradient>
+    <linearGradient id="h3d-top" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#849ed9"/>
+      <stop offset="26%" stop-color="#5b73ad"/>
+      <stop offset="64%" stop-color="#354673"/>
+      <stop offset="90%" stop-color="#1d2744"/>
+      <stop offset="100%" stop-color="#4d649e"/>
+    </linearGradient>
+    <linearGradient id="h3d-shorts" x1="8%" y1="0%" x2="92%" y2="100%">
+      <stop offset="0%" stop-color="#525f7a"/>
+      <stop offset="35%" stop-color="#31394b"/>
+      <stop offset="78%" stop-color="#191e29"/>
+      <stop offset="100%" stop-color="#0e1118"/>
+    </linearGradient>
+    <linearGradient id="h3d-shorts-far" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#32394a"/>
+      <stop offset="60%" stop-color="#1a1f29"/>
+      <stop offset="100%" stop-color="#0b0d13"/>
+    </linearGradient>
+    <linearGradient id="h3d-shoe" x1="0%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#f0f4fc"/>
+      <stop offset="45%" stop-color="#b8c2d6"/>
+      <stop offset="85%" stop-color="#5e687d"/>
+      <stop offset="100%" stop-color="#394152"/>
+    </linearGradient>
+    <linearGradient id="h3d-shoe-far" x1="0%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#9aa4b8"/>
+      <stop offset="60%" stop-color="#5d667a"/>
+      <stop offset="100%" stop-color="#2c323f"/>
+    </linearGradient>
+    <linearGradient id="h3d-hair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c3d34"/>
+      <stop offset="45%" stop-color="#2a201b"/>
+      <stop offset="85%" stop-color="#140e0c"/>
+      <stop offset="100%" stop-color="#332721"/>
+    </linearGradient>
+    <linearGradient id="h3d-mat" x1="0%" y1="0%" x2="8%" y2="100%">
+      <stop offset="0%" stop-color="#5c8e80" stop-opacity="0.52"/>
+      <stop offset="55%" stop-color="#3c6358" stop-opacity="0.68"/>
+      <stop offset="100%" stop-color="#213832" stop-opacity="0.86"/>
+    </linearGradient>
+    <linearGradient id="h3d-mat-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#192b26" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#395e54" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#162622" stop-opacity="0.85"/>
+    </linearGradient>
+    <radialGradient id="h3d-pf" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7affdb" stop-opacity="1"/>
+      <stop offset="38%" stop-color="#24d4a4" stop-opacity="0.78"/>
+      <stop offset="72%" stop-color="#5b4bff" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#19b389" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="h3d-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b80ff" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#3fe0b5" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#3fe0b5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="h3d-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.46"/>
+      <stop offset="55%" stop-color="#000000" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="h3d-joint" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.22"/>
+    </radialGradient>
+  </defs>
+</svg>
 <main>
 <header>
   <h1>Kegely<span class="tag">for men</span></h1>
@@ -354,8 +437,7 @@ body::before{inset:0}
     arr.forEach(function(a){var col=document.createElement('div');col.innerHTML='<i style="height:'+Math.max(4,a.sum/mx*56)+'px'+(a.sum?'':';opacity:.25')+'"></i><span>'+a.l+'</span>';col.title=a.sum+' s';wk.appendChild(col);});
     var h=$('heat');h.innerHTML='';
     for(var j=34;j>=0;j--){var e=new Date();e.setDate(e.getDate()-j);var c=document.createElement('i');if(per[today(e)])c.className='on';if(j===0)c.className+=' t';c.title=today(e);h.appendChild(c);}
-    var cnt=ss.filter(function(x){return x.date===today();}).length,G=store.goal||3;st.cnt=cnt;st.G=G;$('today').innerHTML='<span>Today</span>';for(var z=0;z<G;z++){var ii=document.createElement('i');ii.className=z<cnt?'on':'';$('today').appendChild(ii);}var dots=[];
-    Array.prototype.forEach.call(dots,function(el,idx){el.className=idx<cnt?'on':'';});
+    var cnt=ss.filter(function(x){return x.date===today();}).length,G=3;st.cnt=cnt;st.G=G;$('today').innerHTML='<span>Today</span>';for(var z=0;z<G;z++){var ii=document.createElement('i');ii.className=z<cnt?'on':'';$('today').appendChild(ii);}
     $('today').setAttribute('aria-label',cnt+' of '+G+' sessions today');
   }
 
@@ -521,38 +603,393 @@ body::before{inset:0}
     el.oninput=function(){store.custom[p[1]]=el.value;save();render();if(!st.running)$('count').textContent=cfg().s;};
   });
 
-  function pts(a){var r=[];for(var i=0;i<a.length;i+=2)r.push(a[i]+','+a[i+1]);return r.join(' ');}
-  function setFig(s,p){var L=s.querySelectorAll('polyline'),C=s.querySelectorAll('circle');
-    L[0].setAttribute('points',pts([p[2],p[3],p[4],p[5]]));L[1].setAttribute('points',pts(p.slice(4,10)));L[2].setAttribute('points',pts([p[2],p[3],p[10],p[11],p[12],p[13]]));
-    C[0].setAttribute('cx',p[0]);C[0].setAttribute('cy',p[1]);C[1].setAttribute('cx',p[4]);C[1].setAttribute('cy',p[5]);}
-  var FIG='<line class="fl" x1="8" y1="97" x2="192" y2="97"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><circle class="hd" r="8"/><circle class="tg" r="5"/>';
-  function setFigF(s,p){var L=s.querySelectorAll('polyline'),C=s.querySelectorAll('circle');
-    L[0].setAttribute('points',pts([p[2],p[3],p[4],p[5]]));L[1].setAttribute('points',pts([p[4],p[5],p[6],p[7],p[8],p[9]]));L[2].setAttribute('points',pts([p[4],p[5],p[10],p[11],p[12],p[13]]));
-    L[3].setAttribute('points',pts([p[2],p[3],p[14],p[15],p[16],p[17]]));L[4].setAttribute('points',pts([p[2],p[3],p[18],p[19],p[20],p[21]]));
-    C[0].setAttribute('cx',p[0]);C[0].setAttribute('cy',p[1]);C[1].setAttribute('cx',p[4]);C[1].setAttribute('cy',p[5]);}
-  var FIGF='<line class="fl" x1="8" y1="97" x2="192" y2="97"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><polyline class="lb"/><circle class="hd" r="8"/><circle class="tg" r="5"/>';
-  var LY=[28,82,40,86,100,86,125,62,140,86,60,88,78,88];
-  var POS={lying:LY,sitting:[96,20,98,32,92,66,130,64,132,95,106,52,120,60],standing:[100,16,100,28,100,58,101,76,100,95,96,44,98,58]};
+  /* 10x Upgraded 3D Volumetric Anatomical & Kinematic Human Engine */
+  var exSpeed=1,exPaused=false;
+  function mMuscle(x1,y1,x2,y2,r1,r2,bp,bn,tp,tn,fill,hl,crease){
+    var dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);
+    if(L<.5)return '<circle cx="'+x1.toFixed(1)+'" cy="'+y1.toFixed(1)+'" r="'+r1.toFixed(1)+'" fill="'+fill+'"/>';
+    var ux=dx/L,uy=dy/L,nx=-uy,ny=ux;
+    var tP=tp||0.45,tN=tn||0.5;
+    var p1x=x1+nx*r1,p1y=y1+ny*r1,p2x=x2+nx*r2,p2y=y2+ny*r2;
+    var q1x=x2-nx*r2,q1y=y2-ny*r2,q2x=x1-nx*r1,q2y=y1-ny*r1;
+    var rmP=r1*(1-tP)+r2*tP+(bp||0)*1.42;
+    var rmN=r1*(1-tN)+r2*tN+(bn||0)*1.42;
+    var c1x=x1+dx*(tP*0.65)+nx*(r1*0.8+rmP*0.35),c1y=y1+dy*(tP*0.65)+ny*(r1*0.8+rmP*0.35);
+    var c2x=x1+dx*(tP+0.35*(1-tP))+nx*(r2*0.75+rmP*0.38),c2y=y1+dy*(tP+0.35*(1-tP))+ny*(r2*0.75+rmP*0.38);
+    var k1x=x1+dx*(tN+0.35*(1-tN))-nx*(r2*0.75+rmN*0.38),k1y=y1+dy*(tN+0.35*(1-tN))-ny*(r2*0.75+rmN*0.38);
+    var k2x=x1+dx*(tN*0.65)-nx*(r1*0.8+rmN*0.35),k2y=y1+dy*(tN*0.65)-ny*(r1*0.8+rmN*0.35);
+    var d='M'+p1x.toFixed(1)+' '+p1y.toFixed(1)+
+          'C'+c1x.toFixed(1)+' '+c1y.toFixed(1)+' '+c2x.toFixed(1)+' '+c2y.toFixed(1)+' '+p2x.toFixed(1)+' '+p2y.toFixed(1)+
+          'A'+r2.toFixed(1)+' '+r2.toFixed(1)+' 0 0 1 '+q1x.toFixed(1)+' '+q1y.toFixed(1)+
+          'C'+k1x.toFixed(1)+' '+k1y.toFixed(1)+' '+k2x.toFixed(1)+' '+k2y.toFixed(1)+' '+q2x.toFixed(1)+' '+q2y.toFixed(1)+
+          'A'+r1.toFixed(1)+' '+r1.toFixed(1)+' 0 0 1 '+p1x.toFixed(1)+' '+p1y.toFixed(1)+'Z';
+    var s='<path d="'+d+'" fill="'+fill+'"/>';
+    /* Core shadow along underside for 3D cylindrical volume */
+    var sx1=x1-nx*(r1*0.72)+ux*1.4,sy1=y1-ny*(r1*0.72)+uy*1.4;
+    var sx2=x2-nx*(r2*0.72)-ux*1.4,sy2=y2-ny*(r2*0.72)-uy*1.4;
+    var scx=x1+dx*tN-nx*(rmN*0.76),scy=y1+dy*tN-ny*(rmN*0.76);
+    s+='<path d="M'+sx1.toFixed(1)+' '+sy1.toFixed(1)+'Q'+scx.toFixed(1)+' '+scy.toFixed(1)+' '+sx2.toFixed(1)+' '+sy2.toFixed(1)+'" fill="none" stroke="rgba(15,10,8,0.22)" stroke-width="'+(Math.max(1,(r1+r2)*0.22)).toFixed(1)+'" stroke-linecap="round"/>';
+    if(hl){
+      /* Key-light 3D specular rim & muscle belly sheen */
+      var hx1=x1+nx*(r1*0.58)+ux*1.8,hy1=y1+ny*(r1*0.58)+uy*1.8;
+      var hx2=x2+nx*(r2*0.58)-ux*1.8,hy2=y2+ny*(r2*0.58)-uy*1.8;
+      var hcx=x1+dx*tP+nx*(rmP*0.68),hcy=y1+dy*tP+ny*(rmP*0.68);
+      s+='<path d="M'+hx1.toFixed(1)+' '+hy1.toFixed(1)+'Q'+hcx.toFixed(1)+' '+hcy.toFixed(1)+' '+hx2.toFixed(1)+' '+hy2.toFixed(1)+'" fill="none" stroke="rgba(255,255,255,0.34)" stroke-width="1.35" stroke-linecap="round"/>';
+    }
+    if(crease){
+      /* Anatomical muscle separation line (e.g. IT band / deltoid-bicep / linea alba) */
+      var cx1=x1+ux*L*0.18+nx*0.5,cy1=y1+uy*L*0.18+ny*0.5;
+      var cx2=x1+ux*L*0.82-nx*0.3,cy2=y1+uy*L*0.82-ny*0.3;
+      var cmx=x1+ux*L*0.5+nx*(bp*0.35),cmy=y1+uy*L*0.5+ny*(bp*0.35);
+      s+='<path d="M'+cx1.toFixed(1)+' '+cy1.toFixed(1)+'Q'+cmx.toFixed(1)+' '+cmy.toFixed(1)+' '+cx2.toFixed(1)+' '+cy2.toFixed(1)+'" fill="none" stroke="rgba(40,22,14,0.18)" stroke-width="0.9" stroke-linecap="round"/>';
+    }
+    return s;
+  }
+
+  function mFoot3D(ax,ay,tx,ty,far){
+    var dx=tx-ax,dy=ty-ay,L=Math.hypot(dx,dy)||1;
+    var ux=dx/L,uy=dy/L,nx=-uy,ny=ux;
+    var fill=far?'url(#h3d-shoe-far)':'url(#h3d-shoe)';
+    var hx=ax-ux*2.4+nx*0.6,hy=ay-uy*2.4+ny*0.6;
+    var s=mMuscle(hx,hy,tx,ty,3.3,2.3,1.5,0.3,0.4,0.5,fill,!far,false);
+    /* Shoe sole highlight */
+    var s1x=hx-nx*2.6,s1y=hy-ny*2.6,s2x=tx-nx*1.9,s2y=ty-ny*1.9;
+    s+='<line x1="'+s1x.toFixed(1)+'" y1="'+s1y.toFixed(1)+'" x2="'+s2x.toFixed(1)+'" y2="'+s2y.toFixed(1)+'" stroke="'+(far?'rgba(200,210,230,0.3)':'rgba(255,255,255,0.65)')+'" stroke-width="1.3" stroke-linecap="round"/>';
+    return s;
+  }
+
+  function mHand3D(ex,ey,wx,wy,far){
+    var dx=wx-ex,dy=wy-ey,L=Math.hypot(dx,dy)||1;
+    var ux=dx/L,uy=dy/L,nx=-uy,ny=ux;
+    var fill=far?'url(#h3d-skin-far)':'url(#h3d-skin)';
+    var fx=wx+ux*3.6,fy=wy+uy*3.6;
+    var s=mMuscle(wx-ux*0.8,wy-uy*0.8,fx,fy,2.6,1.8,0.6,0.4,0.45,0.5,fill,!far,false);
+    /* Thumb contour */
+    var thx=wx+ux*1.8+nx*2.2,thy=wy+uy*1.8+ny*2.2;
+    s+='<circle cx="'+thx.toFixed(1)+'" cy="'+thy.toFixed(1)+'" r="1.3" fill="'+fill+'"/>';
+    return s;
+  }
+
+  function mHead3D(nx,ny,hx,hy,ang){
+    /* Sculpted sternocleidomastoid & trapezius neck column */
+    var s=mMuscle(nx,ny,hx,hy,4.1,3.7,0.4,0.35,0.5,0.5,'url(#h3d-skin)',true,true);
+    /* Under-chin shadow on upper neck */
+    var ndx=hx-nx,ndy=hy-ny,nL=Math.hypot(ndx,ndy)||1;
+    var nux=ndx/nL,nuy=ndy/nL;
+    s+='<ellipse cx="'+(hx-nux*2.6).toFixed(1)+'" cy="'+(hy-nuy*2.6).toFixed(1)+'" rx="3.8" ry="2.2" fill="rgba(45,22,12,0.26)"/>';
+
+    if(ang>500){
+      /* Front-facing 3D sculpted human head (Butterfly pose) */
+      s+='<g transform="translate('+hx.toFixed(1)+','+hy.toFixed(1)+')">'+
+         /* Ears */
+         '<ellipse cx="-6.3" cy="0.6" rx="1.3" ry="2.3" fill="#c98667"/>'+
+         '<ellipse cx="6.3" cy="0.6" rx="1.3" ry="2.3" fill="#c98667"/>'+
+         /* Cranium, cheekbones, jawline & chin contour */
+         '<path d="M-6.2,-2.2 C-6.4,-6.8 -3.8,-8.4 0,-8.4 C3.8,-8.4 6.4,-6.8 6.2,-2.2 C6.1,1.2 5.2,4.2 3.2,6.0 C1.5,7.4 -1.5,7.4 -3.2,6.0 C-5.2,4.2 -6.1,1.2 -6.2,-2.2 Z" fill="url(#h3d-skin)"/>'+
+         /* Cheek & jaw 3D contour shading */
+         '<path d="M-4.6,3.2 Q0,6.6 4.6,3.2" fill="none" stroke="rgba(90,45,28,0.22)" stroke-width="1.1" stroke-linecap="round"/>'+
+         /* Eyebrows & eyes */
+         '<path d="M-4.1,-1.3 Q-2.6,-2.0 -1.2,-1.4 M1.2,-1.4 Q2.6,-2.0 4.1,-1.3" fill="none" stroke="#2d211b" stroke-width="0.95" stroke-linecap="round"/>'+
+         '<ellipse cx="-2.6" cy="-0.2" rx="1.05" ry="0.65" fill="#231915"/>'+
+         '<ellipse cx="2.6" cy="-0.2" rx="1.05" ry="0.65" fill="#231915"/>'+
+         '<circle cx="-2.8" cy="-0.35" r="0.3" fill="#ffffff"/>'+
+         '<circle cx="2.4" cy="-0.35" r="0.3" fill="#ffffff"/>'+
+         /* Nose bridge & tip */
+         '<path d="M-0.5,-0.8 L-0.7,2.1 Q0,2.7 0.7,2.1 L0.5,-0.8" fill="rgba(165,100,72,0.32)"/>'+
+         /* Calm lips */
+         '<path d="M-2.0,4.1 Q0,4.6 2.0,4.1" fill="none" stroke="rgba(135,68,50,0.65)" stroke-width="1.0" stroke-linecap="round"/>'+
+         /* Anatomically fitted 3D hair with temple taper */
+         '<path d="M-6.4,-1.0 C-6.8,-3.5 -6.2,-8.8 0,-9.0 C6.2,-8.8 6.8,-3.5 6.4,-1.0 C5.9,-3.2 4.6,-4.8 2.2,-5.1 C0,-5.3 -2.2,-5.1 -4.6,-4.8 C-5.6,-4.2 -6.0,-2.6 -6.4,-1.0 Z" fill="url(#h3d-hair)"/>'+
+         '<path d="M-3.8,-7.2 Q0,-8.3 3.8,-6.8" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round"/>'+
+         '</g>';
+      return s;
+    }
+
+    /* Compute exact cranial axis from neck->head so crown ALWAYS aligns with spine and face points naturally */
+    var rot=Math.atan2(ndy,ndx)*180/Math.PI+90;
+    /* In Clamshell (side-lying with head on left looking forward/down toward viewer), flip face side */
+    var flip=(ang===15)?-1:1;
+    /* Subtle head pitch nod relative to neck */
+    var nod=(ang===-68)?8:(ang===8)?-8:0;
+    s+='<g transform="translate('+hx.toFixed(1)+','+hy.toFixed(1)+') rotate('+(rot+nod).toFixed(1)+') scale('+flip+',1)">'+
+       /* 1. Unified Anatomical Human Skull, Forehead, Nose, Lips, Chin & Mandible Profile */
+       '<path d="M-3.0,4.2 C-5.8,2.4 -6.5,-1.4 -5.1,-4.8 C-3.7,-7.3 0.8,-7.7 3.6,-6.0 C5.0,-5.1 5.5,-3.3 5.4,-1.7 C5.3,-1.0 6.8,0.0 6.8,0.8 C6.8,1.4 5.6,1.5 5.7,2.1 C6.0,2.5 5.8,3.1 5.1,3.5 C5.6,4.1 5.3,5.2 3.9,5.5 C2.1,5.8 0.2,5.0 -1.0,4.2 Z" fill="url(#h3d-skin)"/>'+
+       /* 2. 3D Facial Plane Highlight (forehead, nose bridge, cheekbone) */
+       '<path d="M3.4,-5.4 C4.7,-4.5 5.1,-2.9 5.0,-1.6 C4.9,-0.9 6.3,0.1 6.3,0.7" fill="none" stroke="rgba(255,245,235,0.45)" stroke-width="0.9" stroke-linecap="round"/>'+
+       /* 3. Defined Jawline & Mandible Shadow Crease */
+       '<path d="M4.2,5.3 C2.2,5.6 0.3,4.8 -0.8,3.7" fill="none" stroke="rgba(85,42,26,0.38)" stroke-width="0.95" stroke-linecap="round"/>'+
+       /* 4. Eyebrow, Eye & Upper Eyelid */
+       '<path d="M3.1,-2.1 Q4.2,-2.4 5.1,-1.8" fill="none" stroke="#2d211b" stroke-width="0.85" stroke-linecap="round"/>'+
+       '<ellipse cx="3.9" cy="-1.0" rx="0.85" ry="0.6" fill="#231915"/>'+
+       '<circle cx="4.1" cy="-1.15" r="0.26" fill="#ffffff"/>'+
+       /* 5. Nostril & Lip Line */
+       '<circle cx="5.7" cy="1.1" r="0.38" fill="rgba(110,52,34,0.55)"/>'+
+       '<path d="M4.5,2.6 Q5.2,2.7 5.7,2.5" fill="none" stroke="rgba(130,62,45,0.6)" stroke-width="0.75" stroke-linecap="round"/>'+
+       /* 6. Sculpted Human Haircut with Sideburn & Temple Taper */
+       '<path d="M5.1,-3.6 C5.7,-5.2 4.1,-7.9 0.4,-8.2 C-3.9,-8.4 -7.0,-5.3 -6.6,-0.9 C-6.3,1.7 -4.9,3.5 -3.2,4.1 C-2.5,2.6 -2.2,0.8 -1.3,-0.2 C-0.5,-0.2 -0.3,1.3 0.4,1.3 C0.7,-0.6 1.6,-2.3 3.4,-2.9 Z" fill="url(#h3d-hair)"/>'+
+       '<path d="M-4.2,-6.2 C-1.8,-7.8 2.0,-7.5 4.0,-5.4" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" stroke-linecap="round"/>'+
+       /* 7. Anatomically Proportioned Human Ear & Helix */
+       '<ellipse cx="-1.1" cy="1.1" rx="1.45" ry="2.15" transform="rotate(-8 -1.1 1.1)" fill="#eabba0" stroke="rgba(115,62,42,0.42)" stroke-width="0.6"/>'+
+       '<path d="M-1.3,0.2 Q-0.5,1.1 -1.2,1.9" fill="none" stroke="rgba(120,62,42,0.48)" stroke-width="0.65" stroke-linecap="round"/>'+
+       '</g>';
+    return s;
+  }
+  /* True Kinematic Arc-Preserving Joint Solver (prevents linear foreshortening) */
+  function lerpChain(px,py,ax1,ay1,ax2,ay2,bx1,by1,bx2,by2,k){
+    var d1x=ax1-px,d1y=ay1-py,d2x=bx1-px,d2y=by1-py;
+    var r1=Math.hypot(d1x,d1y),r2=Math.hypot(d2x,d2y);
+    var a1=Math.atan2(d1y,d1x),a2=Math.atan2(d2y,d2x);
+    var da=a2-a1;
+    while(da>Math.PI)da-=2*Math.PI;
+    while(da<-Math.PI)da+=2*Math.PI;
+    var r=r1+(r2-r1)*k,ang=a1+da*k;
+    var jx=px+Math.cos(ang)*r,jy=py+Math.sin(ang)*r;
+    /* Second bone relative to joint 1 */
+    var e1x=ax2-ax1,e1y=ay2-ay1,e2x=bx2-bx1,e2y=by2-by1;
+    var L1=Math.hypot(e1x,e1y),L2=Math.hypot(e2x,e2y);
+    var b1=Math.atan2(e1y,e1x),b2=Math.atan2(e2y,e2x);
+    var db=b2-b1;
+    while(db>Math.PI)db-=2*Math.PI;
+    while(db<-Math.PI)db+=2*Math.PI;
+    var L=L1+(L2-L1)*k,bang=b1+db*k;
+    var wx=jx+Math.cos(bang)*L,wy=jy+Math.sin(bang)*L;
+    return [jx,jy,wx,wy,bang];
+  }
+
+  function interpPose(a,b,k,t){
+    var p=[];
+    for(var i=0;i<a.length;i++)p.push(a[i]+(b[i]-a[i])*k);
+    /* Subtle continuous biological breathing micro-motion */
+    var br=Math.sin((t||0)*0.0028)*0.45;
+    p[4]+=br*0.2;p[5]-=Math.abs(br)*0.35;
+    /* Clamshell (ang===15) has a closed-chain pinned ankle (heels glued together while knee rotates in 3D depth) */
+    if(a[36]===15){
+      /* Add a slight 3D foreshortening arc to the top knee as it opens */
+      p[30]-=Math.sin(k*Math.PI)*2.2;
+      return p;
+    }
+    /* Preserve true circular arc kinematics on open-chain arms & legs when in side profile */
+    if(a[36]<500){
+      var fArm=lerpChain(p[8],p[9],a[10]-a[8]+p[8],a[11]-a[9]+p[9],a[12]-a[8]+p[8],a[13]-a[9]+p[9],b[10]-b[8]+p[8],b[11]-b[9]+p[9],b[12]-b[8]+p[8],b[13]-b[9]+p[9],k);
+      p[10]=fArm[0];p[11]=fArm[1];p[12]=fArm[2];p[13]=fArm[3];
+      var nArm=lerpChain(p[14],p[15],a[16]-a[14]+p[14],a[17]-a[15]+p[15],a[18]-a[14]+p[14],a[19]-a[15]+p[15],b[16]-b[14]+p[14],b[17]-b[15]+p[15],b[18]-b[14]+p[14],b[19]-b[15]+p[15],k);
+      p[16]=nArm[0];p[17]=nArm[1];p[18]=nArm[2];p[19]=nArm[3];
+      var fLeg=lerpChain(p[20],p[21],a[22]-a[20]+p[20],a[23]-a[21]+p[21],a[24]-a[20]+p[20],a[25]-a[21]+p[21],b[22]-b[20]+p[20],b[23]-b[21]+p[21],b[24]-b[20]+p[20],b[25]-b[21]+p[21],k);
+      p[22]=fLeg[0];p[23]=fLeg[1];p[24]=fLeg[2];p[25]=fLeg[3];
+      var fFootDx=(a[26]-a[24])*(1-k)+(b[26]-b[24])*k,fFootDy=(a[27]-a[25])*(1-k)+(b[27]-b[25])*k;
+      p[26]=p[24]+fFootDx;p[27]=p[25]+fFootDy;
+      var nLeg=lerpChain(p[28],p[29],a[30]-a[28]+p[28],a[31]-a[29]+p[29],a[32]-a[28]+p[28],a[33]-a[29]+p[29],b[30]-b[28]+p[28],b[31]-b[29]+p[29],b[32]-b[28]+p[28],b[33]-b[29]+p[29],k);
+      p[30]=nLeg[0];p[31]=nLeg[1];p[32]=nLeg[2];p[33]=nLeg[3];
+      var nFootDx=(a[34]-a[32])*(1-k)+(b[34]-b[32])*k,nFootDy=(a[35]-a[33])*(1-k)+(b[35]-b[33])*k;
+      p[34]=p[32]+nFootDx;p[35]=p[33]+nFootDy;
+    }
+    return p;
+  }
+
+  function setFig3D(s,p,w,meta){
+    var hx=p[0],hy=p[1],nx=p[2],ny=p[3],tx=p[4],ty=p[5],px=p[6],py=p[7],
+        fsx=p[8],fsy=p[9],fex=p[10],fey=p[11],fwx=p[12],fwy=p[13],
+        nsx=p[14],nsy=p[15],nex=p[16],ney=p[17],nwx=p[18],nwy=p[19],
+        fhx=p[20],fhy=p[21],fkx=p[22],fky=p[23],fax=p[24],fay=p[25],ftx=p[26],fty=p[27],
+        nhx=p[28],nhy=p[29],nkx=p[30],nky=p[31],nax=p[32],nay=p[33],ntx=p[34],nty=p[35],
+        ang=p[36],bel=p[37],pf=p[38];
+
+    /* 1. 3D Studio Floor Grid & Beveled Exercise Mat */
+    var out='<line x1="0" y1="84" x2="200" y2="84" stroke="rgba(140,155,180,0.12)" stroke-width="0.6"/>'+
+            '<polygon points="8,98 26,84 184,84 195,98" fill="url(#h3d-mat)" stroke="rgba(255,255,255,0.22)" stroke-width="0.7"/>'+
+            '<polygon points="12,96 28,85.5 182,85.5 191,96" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="0.5" stroke-dasharray="2 2"/>'+
+            '<polygon points="8,98 195,98 193,101.5 10,101.5" fill="url(#h3d-mat-edge)"/>';
+    if(w===1){
+      /* 3D Studio Wall for Wall Sit */
+      out+='<polygon points="52,4 63,4 63,93 52,98" fill="rgba(120,138,168,0.24)" stroke="rgba(255,255,255,0.22)" stroke-width="0.7"/>'+
+           '<line x1="63" y1="4" x2="63" y2="93" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>';
+    }else if(w===2){
+      /* 3D Ergonomic Studio Box for Sitting */
+      out+='<polygon points="75,72 103,72 106,91 72,91" fill="rgba(95,112,142,0.34)" stroke="rgba(255,255,255,0.24)" stroke-width="0.8"/>'+
+           '<polygon points="75,72 80,68 106,68 103,72" fill="rgba(145,165,198,0.35)"/>';
+    }
+
+    /* Dedicated Front-View 3D Seated Renderer for Butterfly Pose (Baddha Konasana) */
+    if(ang>500){
+      out+='<ellipse cx="100" cy="91.5" rx="38" ry="5.2" fill="url(#h3d-shadow)"/>';
+      /* Broad V-Taper 3D Male Torso & Compression Shorts Seated on Mat */
+      out+='<path d="M86,'+fsy.toFixed(1)+' C92,'+(fsy-2).toFixed(1)+' 108,'+(nsy-2).toFixed(1)+' 114,'+nsy.toFixed(1)+
+           ' C113,'+(ty+4).toFixed(1)+' 110,'+(py-6).toFixed(1)+' 109,'+py.toFixed(1)+
+           ' L91,'+py.toFixed(1)+' C90,'+(py-6).toFixed(1)+' 87,'+(ty+4).toFixed(1)+' 86,'+fsy.toFixed(1)+' Z" fill="url(#h3d-top)"/>';
+      /* Pectoral & Linea Alba 3D Shading */
+      out+='<path d="M90,'+(fsy+9).toFixed(1)+' Q95,'+(fsy+11.5).toFixed(1)+' 99.5,'+(fsy+9.5).toFixed(1)+' M100.5,'+(nsy+9.5).toFixed(1)+' Q105,'+(nsy+11.5).toFixed(1)+' 110,'+(nsy+9).toFixed(1)+'" fill="none" stroke="rgba(20,30,55,0.32)" stroke-width="1.1" stroke-linecap="round"/>';
+      out+='<line x1="100" y1="'+(fsy+9).toFixed(1)+'" x2="100" y2="'+(py-4).toFixed(1)+'" stroke="rgba(20,30,55,0.22)" stroke-width="0.9"/>';
+      /* Seated Pelvis & Shorts Girdle on Mat */
+      out+='<path d="M90,'+(py-4).toFixed(1)+' L110,'+(py-4).toFixed(1)+' C112,'+(py+4).toFixed(1)+' 108,'+(py+7).toFixed(1)+' 100,'+(py+7).toFixed(1)+' C92,'+(py+7).toFixed(1)+' 88,'+(py+4).toFixed(1)+' 90,'+(py-4).toFixed(1)+' Z" fill="url(#h3d-shorts)"/>';
+      /* Symmetrical 3D Thighs Opening Outward (with compression shorts on upper thighs) */
+      var lmx=(fhx*0.42+fkx*0.58),lmy=(fhy*0.42+fky*0.58);
+      var rmx=(nhx*0.42+nkx*0.58),rmy=(nhy*0.42+nky*0.58);
+      out+=mMuscle(fhx,fhy,fkx,fky,6.6,4.7,1.6,1.8,0.45,0.5,'url(#h3d-skin)',true,true);
+      out+=mMuscle(nhx,nhy,nkx,nky,6.6,4.7,1.8,1.6,0.45,0.5,'url(#h3d-skin)',true,true);
+      out+=mMuscle(fhx,fhy,lmx,lmy,7.0,5.6,1.3,1.3,0.45,0.5,'url(#h3d-shorts)',true,false);
+      out+=mMuscle(nhx,nhy,rmx,rmy,7.0,5.6,1.3,1.3,0.45,0.5,'url(#h3d-shorts)',true,false);
+      /* Symmetrical 3D Knees & Shins Folding Inward to Center */
+      out+='<circle cx="'+fkx.toFixed(1)+'" cy="'+fky.toFixed(1)+'" r="4.6" fill="url(#h3d-skin)"/>';
+      out+='<circle cx="'+nkx.toFixed(1)+'" cy="'+nky.toFixed(1)+'" r="4.6" fill="url(#h3d-skin)"/>';
+      out+=mMuscle(fkx,fky,fax,fay,4.5,3.1,1.8,0.8,0.42,0.5,'url(#h3d-skin)',true,false);
+      out+=mMuscle(nkx,nky,nax,nay,4.5,3.1,0.8,1.8,0.42,0.5,'url(#h3d-skin)',true,false);
+      /* Soles of Feet Pressed Together at Center of Mat */
+      out+=mMuscle(fax,fay,ftx,fty,3.2,2.6,0.9,0.5,0.5,0.5,'url(#h3d-shoe)',true,false);
+      out+=mMuscle(nax,nay,ntx,nty,3.2,2.6,0.5,0.9,0.5,0.5,'url(#h3d-shoe)',true,false);
+      out+='<line x1="100" y1="'+(fay-3.2).toFixed(1)+'" x2="100" y2="'+(fay+3.2).toFixed(1)+'" stroke="rgba(30,40,60,0.45)" stroke-width="1.1" stroke-linecap="round"/>';
+      /* Anatomical Pelvic Floor Sling & Release Glow at Base of Pelvis */
+      var prF=(6.5+pf*6.0).toFixed(1);
+      out+='<circle cx="100" cy="'+(py+1).toFixed(1)+'" r="'+prF+'" fill="url(#h3d-pf)" opacity="'+(0.48+pf*0.45).toFixed(2)+'"/>';
+      out+='<path d="M91,'+(py-1).toFixed(1)+' Q100,'+(py+4.5+pf*2.2).toFixed(1)+' 109,'+(py-1).toFixed(1)+'" fill="none" stroke="#6bffd8" stroke-width="2.2" stroke-linecap="round"/>';
+      /* Sculpted Front 3D Head & Neck */
+      out+=mHead3D(nx,ny,hx,hy,ang);
+      /* Symmetrical 3D Arms Reaching Down to Clasp the Feet */
+      out+='<circle cx="'+fsx.toFixed(1)+'" cy="'+fsy.toFixed(1)+'" r="4.5" fill="url(#h3d-top)"/>';
+      out+='<circle cx="'+nsx.toFixed(1)+'" cy="'+nsy.toFixed(1)+'" r="4.5" fill="url(#h3d-top)"/>';
+      out+=mMuscle(fsx,fsy,fex,fey,4.1,3.3,0.9,0.7,0.45,0.5,'url(#h3d-skin)',true,false);
+      out+=mMuscle(nsx,nsy,nex,ney,4.1,3.3,0.7,0.9,0.45,0.5,'url(#h3d-skin)',true,false);
+      out+=mMuscle(fex,fey,fwx,fwy,3.2,2.4,0.7,0.5,0.4,0.5,'url(#h3d-skin)',true,false);
+      out+=mMuscle(nex,ney,nwx,nwy,3.2,2.4,0.5,0.7,0.4,0.5,'url(#h3d-skin)',true,false);
+      /* Hands Clasping Feet Together */
+      out+='<ellipse cx="'+fwx.toFixed(1)+'" cy="'+fwy.toFixed(1)+'" rx="2.9" ry="2.3" fill="url(#h3d-skin)"/>';
+      out+='<ellipse cx="'+nwx.toFixed(1)+'" cy="'+nwy.toFixed(1)+'" rx="2.9" ry="2.3" fill="url(#h3d-skin)"/>';
+      if(meta){
+        var phF=meta.q<0.38?'INHALE · LENGTHEN SPINE':meta.q<0.58?'EXHALE · SOFTEN KNEES':meta.q<0.94?'RELEASE PELVIC FLOOR':'BREATHE · SIT TALL';
+        var pctF=Math.round(35+meta.k*65);
+        out+='<g transform="translate(8,7)"><rect x="0" y="0" width="114" height="15" rx="7.5" fill="rgba(14,18,28,0.62)" stroke="rgba(255,255,255,0.16)" stroke-width="0.6"/><circle cx="7.5" cy="7.5" r="2.8" fill="#4ff5c6"/><text x="14" y="10.2" fill="#f0f4ff" font-size="6.2" font-weight="700" letter-spacing="0.06em">'+phF+'</text></g>'+
+             '<g transform="translate(144,7)"><rect x="0" y="0" width="48" height="15" rx="7.5" fill="rgba(14,18,28,0.62)" stroke="rgba(255,255,255,0.16)" stroke-width="0.6"/><text x="24" y="10.2" text-anchor="middle" fill="#7affdb" font-size="6.2" font-weight="700">'+(exPaused?'PAUSED':exSpeed<1?'0.5× 3D':'PF '+pctF+'%')+'</text></g>';
+      }
+      s.innerHTML=out;
+      return;
+    }
+
+    /* 2. Dynamic Multi-Point Ground Contact Shadows */
+    var minX=Math.min(hx,px,nkx,nax,fwx)-9,maxX=Math.max(hx,px,nkx,nax,fwx)+9;
+    var scx=((minX+maxX)/2).toFixed(1),srx=Math.max(20,(maxX-minX)/2).toFixed(1);
+    out+='<ellipse cx="'+scx+'" cy="92.2" rx="'+srx+'" ry="4.8" fill="url(#h3d-shadow)"/>';
+    if(nay>82)out+='<ellipse cx="'+((nax+ntx)/2).toFixed(1)+'" cy="'+(nay+1.8).toFixed(1)+'" rx="8.5" ry="2.2" fill="url(#h3d-shadow)"/>';
+    if(fay>82)out+='<ellipse cx="'+((fax+ftx)/2).toFixed(1)+'" cy="'+(fay+1.6).toFixed(1)+'" rx="7.5" ry="1.9" fill="url(#h3d-shadow)"/>';
+    if(nwy>82)out+='<ellipse cx="'+nwx.toFixed(1)+'" cy="'+(nwy+1.5).toFixed(1)+'" rx="6.0" ry="1.8" fill="url(#h3d-shadow)"/>';
+
+    /* 3. Far Leg & Far Arm (Depth-Shaded 3D Back Layer) */
+    var fmx=(fhx*.38+fkx*.62),fmy=(fhy*.38+fky*.62);
+    out+=mMuscle(fkx,fky,fax,fay,4.6,2.9,0.5,2.1,0.45,0.36,'url(#h3d-skin-far)',false,false);
+    out+=mFoot3D(fax,fay,ftx,fty,true);
+    out+=mMuscle(fhx,fhy,fkx,fky,6.8,4.7,1.9,1.3,0.45,0.5,'url(#h3d-skin-far)',false,false);
+    out+='<circle cx="'+fkx.toFixed(1)+'" cy="'+fky.toFixed(1)+'" r="4.5" fill="url(#h3d-skin-far)"/>';
+    out+=mMuscle(fhx,fhy,fmx,fmy,7.2,5.6,1.4,1.1,0.45,0.5,'url(#h3d-shorts-far)',false,false);
+    out+=mMuscle(fsx,fsy,fex,fey,4.2,3.3,0.9,0.7,0.45,0.5,'url(#h3d-skin-far)',false,false);
+    out+=mMuscle(fex,fey,fwx,fwy,3.3,2.3,0.8,0.4,0.38,0.5,'url(#h3d-skin-far)',false,false);
+    out+=mHand3D(fex,fey,fwx,fwy,true);
+
+    /* 4. Sculpted 3D Torso (Pelvis, Abdomen/Lumbar, Ribcage/Pectorals/Lats) */
+    var bdir=(hx<px&&hy>65)?-1:1;
+    var bp=bdir>0?bel:0.9,bn=bdir<0?bel:0.9;
+    /* Deep Core & Transverse Abdominis X-Ray Aura */
+    var coreX=((tx+px)/2).toFixed(1),coreY=((ty+py)/2).toFixed(1);
+    out+='<circle cx="'+coreX+'" cy="'+coreY+'" r="'+(9+pf*4).toFixed(1)+'" fill="url(#h3d-core)" opacity="'+(0.3+pf*0.45).toFixed(2)+'"/>';
+    /* Lumbar & Abdomen */
+    out+=mMuscle(tx,ty,px,py,7.6,7.0,bp+0.9,bn+0.9,0.5,0.5,'url(#h3d-top)',true,true);
+    /* Thorax, Pectorals & Latissimus Dorsi */
+    out+=mMuscle(nx,ny,tx,ty,6.8,7.8,1.6,1.4,0.42,0.48,'url(#h3d-top)',true,true);
+    /* Pelvis & Gluteus Maximus Shorts Girdle */
+    out+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="7.5" fill="url(#h3d-shorts)"/>';
+    out+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="7.5" fill="url(#h3d-joint)"/>';
+
+    /* 5. Sculpted 3D Head & Neck */
+    out+=mHead3D(nx,ny,hx,hy,ang);
+
+    /* 6. Near Leg (3D Quadriceps, Hamstrings, Patella, Gastrocnemius Calf & Athletic Shoe) */
+    var nmx=(nhx*.38+nkx*.62),nmy=(nhy*.38+nky*.62);
+    out+=mMuscle(nkx,nky,nax,nay,4.8,3.1,0.6,2.3,0.45,0.36,'url(#h3d-skin)',true,true);
+    out+=mFoot3D(nax,nay,ntx,nty,false);
+    out+=mMuscle(nhx,nhy,nkx,nky,7.1,4.9,2.1,1.4,0.45,0.5,'url(#h3d-skin)',true,true);
+    out+='<circle cx="'+nkx.toFixed(1)+'" cy="'+nky.toFixed(1)+'" r="4.7" fill="url(#h3d-skin)"/>';
+    out+='<circle cx="'+nkx.toFixed(1)+'" cy="'+nky.toFixed(1)+'" r="4.7" fill="url(#h3d-joint)"/>';
+    out+=mMuscle(nhx,nhy,nmx,nmy,7.5,5.9,1.5,1.2,0.45,0.5,'url(#h3d-shorts)',true,false);
+
+    /* 7. Anatomical X-Ray Pelvic Floor Sling & Biomechanical Lift Vector */
+    var tdx=nx-px,tdy=ny-py,tL=Math.hypot(tdx,tdy)||1;
+    var tux=tdx/tL,tuy=tdy/tL,tnx=-tuy,tny=tux;
+    var pr=(6.5+pf*6.5).toFixed(1);
+    out+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="'+pr+'" fill="url(#h3d-pf)" opacity="'+(0.5+pf*0.48).toFixed(2)+'"/>';
+    /* Pubococcygeus / Levator Ani Muscular Sling Hammock */
+    var s1x=px+tnx*5.2-tux*1.5,s1y=py+tny*5.2-tuy*1.5;
+    var s2x=px-tnx*5.2-tux*1.5,s2y=py-tny*5.2-tuy*1.5;
+    var lift=(2.2-pf*3.6);
+    var scx2=px-tux*lift,scy2=py-tuy*lift;
+    out+='<path d="M'+s1x.toFixed(1)+' '+s1y.toFixed(1)+'Q'+scx2.toFixed(1)+' '+scy2.toFixed(1)+' '+s2x.toFixed(1)+' '+s2y.toFixed(1)+'" fill="none" stroke="#6bffd8" stroke-width="'+(1.8+pf*1.2).toFixed(1)+'" stroke-linecap="round"/>';
+    /* Upward cranial lift vector arrow when engaged */
+    if(pf>0.55){
+      var ax1=px-tux*1.2,ay1=py-tuy*1.2,ax2=px+tux*(4.5+pf*3.5),ay2=py+tuy*(4.5+pf*3.5);
+      var aw1x=ax2-tux*2.4+tnx*1.8,aw1y=ay2-tuy*2.4+tny*1.8;
+      var aw2x=ax2-tux*2.4-tnx*1.8,aw2y=ay2-tuy*2.4-tny*1.8;
+      out+='<path d="M'+ax1.toFixed(1)+' '+ay1.toFixed(1)+'L'+ax2.toFixed(1)+' '+ay2.toFixed(1)+'M'+aw1x.toFixed(1)+' '+aw1y.toFixed(1)+'L'+ax2.toFixed(1)+' '+ay2.toFixed(1)+'L'+aw2x.toFixed(1)+' '+aw2y.toFixed(1)+'" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="'+(pf*0.9).toFixed(2)+'"/>';
+    }
+
+    /* 8. Near Arm (Deltoid Cap, Bicep/Tricep, Forearm & Articulated Hand) */
+    out+='<circle cx="'+nsx.toFixed(1)+'" cy="'+nsy.toFixed(1)+'" r="4.6" fill="url(#h3d-top)"/>';
+    out+=mMuscle(nsx,nsy,nex,ney,4.4,3.4,1.1,0.8,0.46,0.5,'url(#h3d-skin)',true,true);
+    out+='<circle cx="'+nex.toFixed(1)+'" cy="'+ney.toFixed(1)+'" r="3.3" fill="url(#h3d-skin)"/>';
+    out+=mMuscle(nex,ney,nwx,nwy,3.4,2.5,0.9,0.5,0.38,0.5,'url(#h3d-skin)',true,false);
+    out+=mHand3D(nex,ney,nwx,nwy,false);
+
+    /* 9. Live Biomechanical Phase HUD & Interactive Control Badge (on Exercise cards) */
+    if(meta){
+      var ph=meta.q<0.38?'EXHALE · ENGAGE & LIFT':meta.q<0.58?'HOLD · PELVIC FLOOR ON':meta.q<0.94?'INHALE · SLOW RELEASE':'BREATHE · PREPARE';
+      var dotCol=meta.k>0.55?'#4ff5c6':'#aab8e0';
+      var pct=Math.round(35+meta.k*65);
+      out+='<g transform="translate(8,7)">'+
+           '<rect x="0" y="0" width="114" height="15" rx="7.5" fill="rgba(14,18,28,0.62)" stroke="rgba(255,255,255,0.16)" stroke-width="0.6"/>'+
+           '<circle cx="7.5" cy="7.5" r="2.8" fill="'+dotCol+'"/>'+
+           '<text x="14" y="10.2" fill="#f0f4ff" font-size="6.2" font-weight="700" letter-spacing="0.06em">'+ph+'</text>'+
+           '</g>'+
+           '<g transform="translate(144,7)">'+
+           '<rect x="0" y="0" width="48" height="15" rx="7.5" fill="rgba(14,18,28,0.62)" stroke="rgba(255,255,255,0.16)" stroke-width="0.6"/>'+
+           '<text x="24" y="10.2" text-anchor="middle" fill="#7affdb" font-size="6.2" font-weight="700">'+(exPaused?'PAUSED':exSpeed<1?'0.5× 3D':'PF '+pct+'%')+'</text>'+
+           '</g>';
+    }
+    s.innerHTML=out;
+  }
+  var POS={"lying":[46,81,56,84,71,85,86,86,58,83,71,86,83,88,57,85,70,89,83,90,87,84,101,70,113,88,122,89,86,86,101,72,114,90,123,91,-80,0.4,0.85],"sitting":[92,31,91,41,90,55,90,69,92,43,94,56,104,64,89,44,91,58,103,66,92,68,112,68,112,88,121,89,90,70,110,70,110,90,120,91,0,0.3,0.85],"standing":[100,14,99,23,98,36,98,50,100,25,99,38,101,50,97,25,96,39,98,51,100,49,101,69,100,88,109,89,98,50,99,70,98,90,108,91,0,0.3,0.85]};
   var EX=[
-   ['Squats','10 reps','Feet shoulder-width apart. Sit your hips back and down with your chest up, then stand tall. Breathe out and gently lift your pelvic floor as you rise.',[[100,16,100,28,100,58,102,77,100,95,112,38,128,38],[84,36,90,48,72,72,110,72,104,95,108,52,128,50]]],
-   ['Glute bridge','10 reps · hold 3s','Lie on your back, knees bent, feet flat. Breathe out, squeeze your glutes and pelvic floor, and lift your hips until shoulders, hips and knees line up. Lower slowly.',[LY,[28,84,42,88,100,58,128,58,142,88,60,90,78,90]]],
-   ['Bird dog','8 reps each side · hold 3s','On hands and knees, reach one arm forward and the opposite leg back, keeping your hips level and your back flat. Hold, return, then switch sides.',[[50,44,60,50,130,50,130,92,155,92,60,72,60,92],[50,42,60,50,130,50,152,52,178,50,44,48,28,46]]],
-   ['Butterfly pose (Baddha Konasana)','30\u201360 seconds','Sit tall with the soles of your feet together and your knees out to the sides. Hold your feet, lengthen your spine and let your knees sink toward the floor as your inner thighs and pelvic floor soften. Shown from the front.',[[100,18,100,32,100,58,88,76,99,88,112,76,101,88,80,62,96,87,120,62,104,87],[100,18,100,32,100,58,54,82,97,90,146,82,103,90,76,70,94,88,124,70,106,88]]],
-   ['Locust pose (Salabhasana)','6 reps · hold 5s','Lie face down with your arms by your sides. Breathe out and lift your chest, arms and legs slightly off the floor, squeezing your glutes. Keep your neck long, then lower slowly.',[[28,86,42,88,100,88,130,88,160,88,60,90,80,90],[26,70,42,76,100,88,132,80,165,72,62,82,84,84]]],
-   ['Clamshell','10 reps each side','Lie on your side, knees bent, heels together. Keep your feet touching and open the top knee like a shell without rolling back. Lower slowly.',[[40,70,52,76,100,80,128,68,142,82,62,84,76,84],[40,70,52,76,100,80,122,52,142,82,62,84,76,84]]],
-   ['Happy baby pose (Ananda Balasana)','30\u201360 seconds','Lie on your back, hold your feet or shins with your knees wide toward your armpits. Rock gently side to side and breathe low into your belly. Shown from the feet end.',[[100,16,100,30,100,64,92,84,92,96,108,84,108,96,84,50,92,84,116,50,108,84],[100,16,100,30,100,64,50,58,60,34,150,58,140,34,72,44,60,36,128,44,140,36]]],
-   ['Child’s pose (Balasana)','30–60 seconds','From hands and knees, sit your hips back toward your heels and rest your forehead down with your arms long. Breathe slowly and let everything release.',[[48,52,62,50,130,50,130,92,155,92,60,72,60,92],[46,84,60,80,150,78,132,92,158,92,48,90,30,92]]],
-   ['Diaphragmatic breathing','10 slow breaths','Lie on your back with knees bent and one hand on your belly. Breathe in through your nose so your belly rises and your pelvic floor softens. Breathe out slowly and let it fall.',[[28,82,40,86,100,86,125,62,140,86,66,84,86,80],[28,82,40,86,100,86,125,62,140,86,66,80,86,72]]],
-   ['Wall sit','3 × 20–30 seconds','Lean your back on a wall and slide down until your knees are about 90 degrees. Keep your weight in your heels, breathe steadily and gently lift your pelvic floor. Slide back up.',[[68,16,68,28,68,58,70,77,74,95,76,40,90,40],[68,36,68,48,68,76,108,76,110,95,84,60,98,66]],1]
+   ['Squats','10 reps','Feet shoulder-width apart. Sit your hips back and down with your chest up, then stand tall. Breathe out and gently lift your pelvic floor as you rise.',[[100,14,99,23,98,36,98,50,100,25,99,38,101,50,97,25,96,39,98,51,100,49,101,69,100,88,109,89,98,50,99,70,98,90,108,91,0,0.3,0.4],[105,37,101,46,93,58,85,70,102,47,115,50,128,48,100,48,113,52,127,50,87,69,107,70,100,88,109,89,85,70,105,71,98,90,108,91,8,0.4,0.98]]],
+   ['Glute bridge','10 reps · hold 3s','Lie on your back, knees bent, feet flat. Breathe out, squeeze your glutes and pelvic floor, and lift your hips until shoulders, hips and knees line up. Lower slowly.',[[46,81,56,84,71,85,86,86,58,84,71,87,84,88,57,86,70,90,84,91,87,84,101,70,113,88,122,89,86,86,101,72,114,90,123,91,-80,0.3,0.35],[46,81,56,84,70,80,83,76,58,84,71,87,84,88,57,86,70,90,84,91,84,74,102,68,113,88,122,89,83,76,103,70,114,90,123,91,-68,0.2,1.0]]],
+   ['Bird dog','8 reps each side · hold 3s','On hands and knees, reach one arm forward and the opposite leg back, keeping your hips level and your back flat. Hold, return, then switch sides.',[[128,55,118,58,103,59,88,59,118,58,118,73,120,88,116,60,116,75,118,90,89,59,89,78,70,88,62,89,87,61,87,80,68,90,60,91,65,0.2,0.45],[128,55,118,58,103,59,88,59,118,58,132,57,146,56,116,60,116,75,118,90,89,59,89,78,70,88,62,89,87,59,67,59,48,59,40,65,65,0.1,0.95]]],
+   ['Butterfly pose (Baddha Konasana)','30–60 seconds','Sit tall with the soles of your feet together and your knees out to the sides. Hold your feet, lengthen your spine and let your knees sink toward the floor as your inner thighs and pelvic floor soften. Shown from the front.',[[100,34,100,44,100,60,100,80,86,47,85,66,95,86,114,47,115,66,105,86,93,80,68,66,95,88,99,88,107,80,132,66,105,88,101,88,999,0.3,0.4],[100,32,100,42,100,58,100,80,86,45,86,65,95,86,114,45,114,65,105,86,93,80,64,81,95,88,99,88,107,80,136,81,105,88,101,88,999,0.5,0.95]]],
+   ['Locust pose (Salabhasana)','6 reps · hold 5s','Lie face down with your arms by your sides. Breathe out and lift your chest, arms and legs slightly off the floor, squeezing your glutes. Keep your neck long, then lower slowly.',[[136,82,126,84,111,85,96,86,124,83,110,83,96,84,123,85,109,85,95,86,95,85,75,86,56,87,47,89,94,87,74,88,55,89,46,91,75,0.2,0.35],[134,68,124,74,110,81,96,86,123,74,109,73,95,72,122,76,108,75,94,74,95,84,75,78,56,72,47,72,94,86,74,80,55,74,46,74,55,0.2,0.95]]],
+   ['Clamshell','10 reps each side','Lie on your side, knees bent, heels together. Keep your feet touching and open the top knee like a shell without rolling back. Lower slowly.',[[46,68,56,71,71,74,87,77,55,73,38,78,44,70,58,68,70,59,85,72,88,79,107,90,126,81,132,87,88,75,107,88,126,79,132,85,15,0.3,0.4],[46,68,56,71,71,74,87,77,55,73,38,78,44,70,58,68,70,59,85,72,88,79,107,90,126,81,132,87,88,75,105,63,126,79,132,85,15,0.3,0.98]]],
+   ['Happy baby pose (Ananda Balasana)','30–60 seconds','Lie on your back, hold your feet or shins with your knees wide toward your armpits. Rock gently side to side and breathe low into your belly.',[[50,81,60,84,76,85,92,85,62,82,74,71,84,52,63,85,77,75,89,55,91,82,76,69,83,50,75,49,92,85,80,73,88,53,80,52,-80,0.4,0.5],[50,81,60,84,76,85,92,83,62,82,71,72,79,54,63,85,74,76,84,57,91,80,71,71,78,52,70,51,92,83,75,75,83,55,75,54,-80,0.8,0.95]]],
+   ['Child’s pose (Balasana)','30–60 seconds','From hands and knees, sit your hips back toward your heels and rest your forehead down with your arms long. Breathe slowly and let everything release.',[[124,56,114,58,99,59,84,60,114,59,120,74,130,88,113,61,119,76,129,90,85,60,92,88,72,88,64,89,84,62,91,90,71,90,63,91,65,0.3,0.4],[113,84,103,81,88,79,74,81,102,81,121,86,140,88,101,83,120,88,139,90,75,80,94,88,72,88,64,89,74,82,93,90,71,90,63,91,85,0.6,0.95]]],
+   ['Diaphragmatic breathing','10 slow breaths','Lie on your back with knees bent and one hand on your belly. Breathe in through your nose so your belly rises and your pelvic floor softens. Breathe out slowly and let it fall.',[[46,81,56,84,71,85,86,86,58,83,61,87,67,78,57,86,67,90,78,79,87,84,101,70,113,88,122,89,86,86,101,72,114,90,123,91,-80,0.1,0.4],[46,81,56,84,71,84,86,86,58,83,61,87,67,77,57,86,67,88,78,74,87,84,101,70,113,88,122,89,86,86,101,72,114,90,123,91,-80,2.8,0.95]]],
+   ['Wall sit','3 × 20–30 seconds','Lean your back on a wall and slide down until your knees are about 90 degrees. Keep your weight in your heels, breathe steadily and gently lift your pelvic floor. Slide back up.',[[71,21,70,30,70,44,70,58,71,32,73,45,83,54,69,32,71,46,82,56,71,57,89,69,90,88,99,89,70,58,88,70,89,90,98,91,0,0.3,0.45],[71,33,70,42,70,56,70,70,71,44,73,57,84,65,69,44,71,58,83,66,71,69,91,69,91,88,100,89,70,70,90,70,90,90,99,91,0,0.3,0.95]],1]
   ];
   var io=window.IntersectionObserver?new IntersectionObserver(function(es){es.forEach(function(x){x.target._e.vis=x.isIntersecting;});},{rootMargin:'80px'}):null;
-  EX.forEach(function(e,i){var d=document.createElement('div'),F=e[3][0].length>14;d.className='panel ex';d.innerHTML='<svg class="fg" role="img" aria-label="'+e[0]+' demonstration"></svg><h2>'+(i+1)+'. '+e[0]+'</h2><p class="meta">'+e[1]+'</p><p class="note" style="margin:0">'+e[2]+'</p>';$('exlist').appendChild(d);var s=d.querySelector('svg');s.setAttribute('viewBox','0 0 200 110');s.innerHTML=(e[4]?'<line class="fl" x1="62" y1="6" x2="62" y2="97"/>':'')+(F?FIGF:FIG);(F?setFigF:setFig)(s,e[3][0]);e.svg=s;d._e=e;e.vis=!io;if(io)io.observe(d);});
-  Array.prototype.forEach.call(document.querySelectorAll('svg[data-p]'),function(s){s.setAttribute('viewBox','0 0 200 110');s.innerHTML=FIG;setFig(s,POS[s.getAttribute('data-p')]);});
-  var raf=0;
-  function ez(x){return x*x*(3-2*x);}
-  function loop(t){var q=(t/4200)%1,k=q<.38?ez(q/.38):q<.58?1:q<.96?ez(1-(q-.58)/.38):0;
-    EX.forEach(function(e){if(!e.vis)return;var a=e[3][0],b=e[3][1],p=[];for(var i=0;i<a.length;i++)p.push(a[i]+(b[i]-a[i])*k);(a.length>14?setFigF:setFig)(e.svg,p);});raf=requestAnimationFrame(loop);}
-  function animate(on){cancelAnimationFrame(raf);if(on&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))raf=requestAnimationFrame(loop);}
+  EX.forEach(function(e,i){
+    var d=document.createElement('div');d.className='panel ex';
+    d.innerHTML='<svg class="fg" role="img" aria-label="'+e[0]+' demonstration" style="cursor:pointer" title="Tap to toggle 1x / 0.5x slow-motion / pause"></svg><h2>'+(i+1)+'. '+e[0]+'</h2><p class="meta">'+e[1]+'</p><p class="note" style="margin:0">'+e[2]+'</p>';
+    $('exlist').appendChild(d);
+    var s=d.querySelector('svg');s.setAttribute('viewBox','0 0 200 106');
+    setFig3D(s,e[3][0],e[4],{q:0,k:0});
+    s.onclick=function(){if(!exPaused&&exSpeed===1){exSpeed=0.5;}else if(!exPaused){exPaused=true;}else{exPaused=false;exSpeed=1;}};
+    e.svg=s;d._e=e;e.vis=!io;if(io)io.observe(d);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('svg[data-p]'),function(s){var k=s.getAttribute('data-p');s.setAttribute('viewBox','0 0 200 106');setFig3D(s,POS[k],k==='sitting'?2:0);});
+  var raf=0,animT=0,lastT=0;
+  function ez(x){return x<0.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+  function loop(t){
+    if(!lastT)lastT=t;
+    var dt=Math.min(64,t-lastT);lastT=t;
+    if(!exPaused)animT+=dt*exSpeed;
+    var q=(animT/4600)%1,k=q<.38?ez(q/.38):q<.58?1:q<.94?ez(1-(q-.58)/.36):0;
+    EX.forEach(function(e){
+      if(!e.vis)return;
+      var p=interpPose(e[3][0],e[3][1],k,animT);
+      setFig3D(e.svg,p,e[4],{q:q,k:k});
+    });
+    raf=requestAnimationFrame(loop);
+  }
+  function animate(on){cancelAnimationFrame(raf);lastT=0;if(on&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches))raf=requestAnimationFrame(loop);}
   var dp=null,inst=$('inst');
   window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;inst.style.display='block';$('insttxt').textContent='Add Kegely to your home screen for quick, full-screen access.';$('instbtn').style.display='block';});
   $('instbtn').onclick=function(){if(dp){dp.prompt();dp=null;inst.style.display='none';}};
@@ -649,10 +1086,7 @@ body::before{inset:0}
   var gate=$('gate');if(!store.ok)gate.style.display='block';
   $('gok').onclick=function(){store.ok=true;save();gate.style.display='none';};
   stage.onclick=function(){$('go').click();};stage.style.cursor='pointer';
-  var tp=$('today');tp.setAttribute('role','button');tp.tabIndex=0;tp.style.cursor='pointer';tp.title='Tap to change your daily goal';
-  function cg(){store.goal=((store.goal||3)%6)+1;save();stats();}
   document.addEventListener('visibilitychange',function(){if(!document.hidden&&st.running&&!wl)toggleLock(true);});
-  tp.onclick=cg;tp.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cg();}};
 })();
 </script>
 <script>
