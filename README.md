@@ -52,7 +52,7 @@ Pelvic floor training is simple in theory and surprisingly hard to keep up in pr
 | ⏰ | **Daily reminders** | Add multiple reminder times and manage each one individually |
 | 📖 | **Practical guide** | Find the right muscles, avoid common mistakes and build up gradually |
 | 📱 | **Installable PWA** | Add it to your home screen for an app-like, offline-friendly experience |
-| 🌗 | **Light and dark themes** | Follows your device's appearance setting |
+| 🎨 | **12 themes** | Auto (follows your device), Light, Dark, plus Midnight, Ocean, Forest, Sunset, Lavender, Sand, Sky, Mint and Rose, chosen on the Guide screen |
 
 > [!NOTE]
 > The supporting exercises complement pelvic floor training. They are not Kegels themselves.
