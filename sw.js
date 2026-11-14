@@ -24,7 +24,7 @@ self.addEventListener('fetch',e=>{
   const u=new URL(r.url);
   if(!(u.origin===location.origin||u.hostname==='fonts.googleapis.com'||u.hostname==='fonts.gstatic.com'))return;
   if(r.mode==='navigate'){
-    e.respondWith(fetch(r).then(res=>{const cp=res.clone();caches.open(V).then(c=>c.put('index.html',cp));return res;}).catch(()=>caches.match('index.html').then(m=>m||caches.match('./'))));
+    e.respondWith(fetch(r).then(res=>{if(res&&res.ok){const cp=res.clone();caches.open(V).then(c=>c.put('index.html',cp));}return res;}).catch(()=>caches.match('index.html').then(m=>m||caches.match('./'))));
     return;
   }
   e.respondWith(caches.match(r).then(hit=>{

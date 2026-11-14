@@ -728,7 +728,7 @@ nav button[aria-current="page"]{background:color-mix(in srgb,var(--ink) 13%,tran
 
   $('go').onclick=function(){st.running?pause():start();};
   $('reset').onclick=doReset;
-  document.addEventListener('keydown',function(e){if(e.code==='Space'&&!/INPUT|BUTTON/.test(e.target.tagName)&&$('v-timer').classList.contains('on')){e.preventDefault();$('go').click();}});
+  document.addEventListener('keydown',function(e){if(e.code==='Space'&&e.target!==stage&&!/INPUT|BUTTON/.test(e.target.tagName)&&$('v-timer').classList.contains('on')){e.preventDefault();$('go').click();}});
   var cTimer=null,cLeft=5;
   function closeClearModal(){
     clearInterval(cTimer);cTimer=null;
@@ -1224,7 +1224,15 @@ nav button[aria-current="page"]{background:color-mix(in srgb,var(--ink) 13%,tran
   function arm(r){var n=new Date(),q=r.t.split(':');if((+q[0])*60+(+q[1])<=n.getHours()*60+n.getMinutes())store.fired[r.id]=today();else delete store.fired[r.id];}
   function remNotify(r){
     var o={body:'Time for your Kegel session. Tap to start.',icon:'icon-192.png',badge:'icon-192.png',tag:'kegely-'+r.id,data:{url:'./#timer'}};
-    try{if(navigator.serviceWorker&&navigator.serviceWorker.ready){navigator.serviceWorker.ready.then(function(g){g.showNotification('Kegely',o);});}else new Notification('Kegely',o);}catch(e){}
+    function viaPage(){try{new Notification('Kegely',o);}catch(e){}}
+    try{
+      if(navigator.serviceWorker&&navigator.serviceWorker.getRegistration){
+        navigator.serviceWorker.getRegistration().then(function(g){
+          if(g&&g.active)return g.showNotification('Kegely',o);
+          viaPage();
+        }).catch(viaPage);
+      }else viaPage();
+    }catch(e){viaPage();}
   }
   function remTick(){
     if(!window.Notification||Notification.permission!=='granted')return;
